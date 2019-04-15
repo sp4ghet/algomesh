@@ -1,0 +1,1743 @@
+fileFormatVersion: 2
+guid: 55b10ae94648e0048a98001496b47a79
+timeCreated: 1521384269
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BackBone
+    100002: BackBone_end
+    100004: //RootNode
+    100006: Bird_Mesh
+    100008: Bird_Rig
+    100010: Head
+    100012: Head_end
+    100014: IK2_Left
+    100016: IK2_Left_end
+    100018: IK2_Right
+    100020: IK2_Right_end
+    100022: IK_Left
+    100024: IK_Left_end
+    100026: IK_Right
+    100028: IK_Right_end
+    100030: Root
+    100032: Tail_Left
+    100034: Tail_Left_end
+    100036: Tail_MiddleLeft
+    100038: Tail_MiddleLeft_end
+    100040: Tail_MiddleRight
+    100042: Tail_MiddleRight_end
+    100044: Tail_Right
+    100046: Tail_Right_end
+    100048: Wing_Left1
+    100050: Wing_Left2
+    100052: Wing_Left2_end
+    100054: Wing_Right1
+    100056: Wing_Right2
+    100058: Wing_Right2_end
+    400000: BackBone
+    400002: BackBone_end
+    400004: //RootNode
+    400006: Bird_Mesh
+    400008: Bird_Rig
+    400010: Head
+    400012: Head_end
+    400014: IK2_Left
+    400016: IK2_Left_end
+    400018: IK2_Right
+    400020: IK2_Right_end
+    400022: IK_Left
+    400024: IK_Left_end
+    400026: IK_Right
+    400028: IK_Right_end
+    400030: Root
+    400032: Tail_Left
+    400034: Tail_Left_end
+    400036: Tail_MiddleLeft
+    400038: Tail_MiddleLeft_end
+    400040: Tail_MiddleRight
+    400042: Tail_MiddleRight_end
+    400044: Tail_Right
+    400046: Tail_Right_end
+    400048: Wing_Left1
+    400050: Wing_Left2
+    400052: Wing_Left2_end
+    400054: Wing_Right1
+    400056: Wing_Right2
+    400058: Wing_Right2_end
+    4300000: Bird_Mesh
+    7400000: Animation
+    7400002: Bird_Rig|IdelVogelAction
+    7400004: Flight_Straight
+    7400006: Flight_TurnRight
+    7400008: Flight_TurnLeft
+    7400010: Glide_Straight
+    7400012: Glide_TurnRight
+    7400014: Glide_TurnLeft
+    7400016: Hover_flight
+    7400018: Idle_1
+    7400020: Idle_2
+    7400022: Touch_down
+    7400024: Take_off
+    7400026: Hop
+    7400028: Alternate_Idle_1
+    7400030: Alternate_Idle_2
+    7400032: Alternate_Touch_down
+    7400034: Alternate_Take_off
+    7400036: 'Alternate_Hop '
+    9500000: //RootNode
+    13700000: Bird_Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Animation
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 0
+      lastFrame: 964
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Flight_Straight
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Flight_TurnRight
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 40
+      lastFrame: 65
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Flight_TurnLeft
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 80
+      lastFrame: 105
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Glide_Straight
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 120
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Glide_TurnRight
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 220
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Glide_TurnLeft
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 320
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hover_flight
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 420
+      lastFrame: 440
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_1
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 460
+      lastFrame: 520
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_2
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 540
+      lastFrame: 780
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Touch_down
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 840
+      lastFrame: 880
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Take_off
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 920
+      lastFrame: 964
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hop
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 1000
+      lastFrame: 1030
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Alternate_Idle_1
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 1060
+      lastFrame: 1120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Alternate_Idle_2
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 1140
+      lastFrame: 1380
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Alternate_Touch_down
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 1400
+      lastFrame: 1440
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Alternate_Take_off
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 1480
+      lastFrame: 1524
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Alternate_Hop '
+      takeName: Bird_Rig|BirdAnimation
+      firstFrame: 1560
+      lastFrame: 1590
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bird_Mesh
+        weight: 1
+      - path: Bird_Rig
+        weight: 1
+      - path: Bird_Rig/IK2_Left
+        weight: 1
+      - path: Bird_Rig/IK2_Left/IK2_Left_end
+        weight: 1
+      - path: Bird_Rig/IK2_Right
+        weight: 1
+      - path: Bird_Rig/IK2_Right/IK2_Right_end
+        weight: 1
+      - path: Bird_Rig/IK_Left
+        weight: 1
+      - path: Bird_Rig/IK_Left/IK_Left_end
+        weight: 1
+      - path: Bird_Rig/IK_Right
+        weight: 1
+      - path: Bird_Rig/IK_Right/IK_Right_end
+        weight: 1
+      - path: Bird_Rig/Root
+        weight: 1
+      - path: Bird_Rig/Root/BackBone
+        weight: 1
+      - path: Bird_Rig/Root/BackBone/BackBone_end
+        weight: 1
+      - path: Bird_Rig/Root/Head
+        weight: 1
+      - path: Bird_Rig/Root/Head/Head_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Left/Tail_Left_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleLeft/Tail_MiddleLeft_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight
+        weight: 1
+      - path: Bird_Rig/Root/Tail_MiddleRight/Tail_MiddleRight_end
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right
+        weight: 1
+      - path: Bird_Rig/Root/Tail_Right/Tail_Right_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Left1/Wing_Left2/Wing_Left2_end
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2
+        weight: 1
+      - path: Bird_Rig/Root/Wing_Right1/Wing_Right2/Wing_Right2_end
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.005
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

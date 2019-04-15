@@ -1,0 +1,69 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel ParticlePos
+#pragma kernel SpawnParticles
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+Texture2D<float4> SpawnTex;
+Texture2D<float4> SpawnColor;
+
+RWStructuredBuffer<float4> _ParticlePosBuffer;
+RWStructuredBuffer<float4> _ParticleColorBuffer;
+
+#define BLOCK_SIZE 256
+
+float3 _Scale;
+
+//SpawnParticles uniforms
+uint _ParticleCount;
+float _SpawnRate;
+uint _PCacheTexWidth;
+bool _UseColor;
+float _AspectRatio;
+
+//ParticlePos uniforms
+float _DeltaTime;
+float _Time;
+float _Lifetime;
+
+#include "Assets/Shaders/Util/3dnoise.hlsl"
+#include "Assets/Shaders/Util/curve.hlsl"
+
+[numthreads(BLOCK_SIZE, 1, 1)]
+void SpawnParticles(uint3 id : SV_DispatchThreadID){
+    const unsigned int ParticleID = id.x;
+    float4 pos = _ParticlePosBuffer[ParticleID];
+    if(ParticleID > _ParticleCount * _SpawnRate || pos.w > 1){
+        return;
+    }
+    uint y = ParticleID/_PCacheTexWidth;
+    uint x = ParticleID % _PCacheTexWidth;
+
+    pos = float4(SpawnTex[uint2(x,y)].xyz,0);
+    if(_UseColor){
+        _ParticleColorBuffer[ParticleID] = SpawnColor[uint2(x,y)];
+    }
+    pos.x *= _AspectRatio;
+    _ParticlePosBuffer[ParticleID] = pos;
+}
+
+[numthreads(BLOCK_SIZE, 1,1)]
+void ParticlePos (uint3 id : SV_DispatchThreadID)
+    //uint3 Gid : SV_GroupID, 
+    //uint3 GTid : SV_GroupThreadID, // vec3 of thread ID within group
+    //uint GI : SV_GroupIndex // flattened group ID
+{
+    const unsigned int ParticleID = id.x;
+
+    float4 pos = _ParticlePosBuffer[ParticleID];
+    
+    float intensity = almostIdentity(pos.w, 0.1, 0);
+
+    float3 velocity = curlC( (pos.xyz) + fmod(_Time, 100000) - (fmod(_Time, _Lifetime))) * intensity * 0.1 * (1/_Lifetime);
+    
+    pos.w += _DeltaTime / _Lifetime;
+
+    pos.xyz += velocity;
+
+    _ParticlePosBuffer[ParticleID] = pos;
+}

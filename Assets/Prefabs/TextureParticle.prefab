@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4572659150984825645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4572659150984825640}
+  - component: {fileID: 8714293142902116011}
+  - component: {fileID: 4572659150984825647}
+  - component: {fileID: 4572659150984825646}
+  m_Layer: 0
+  m_Name: TextureParticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4572659150984825640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572659150984825645}
+  m_LocalRotation: {x: -0.18900624, y: 0.005779852, z: -0.7129409, w: -0.6752471}
+  m_LocalPosition: {x: 2.19, y: 2.09, z: -3.96}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 15.277, y: 375.741, z: 95.23501}
+--- !u!114 &8714293142902116011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572659150984825645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a956982cc96754f96efa380750a962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_particleCount: 14336
+  m_textureParticleShader: {fileID: 7200000, guid: f48d67a88b7f68a4c8dc234588526e49,
+    type: 3}
+  m_pCache: {fileID: 11400000, guid: 26aa094d860d8ad48b40f73c02d2872b, type: 3}
+  m_aspectRatio: {x: 1, y: 1}
+  m_mesh: {fileID: 4300000, guid: 6e5abb41b06230b458a17c75cadb613f, type: 2}
+  m_mat: {fileID: 2100000, guid: b253aa6478d902b4db22e782198facc7, type: 2}
+  m_curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0005124472
+      value: -0.010105722
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.18024777
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_spawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.79707193
+      value: -0.013460532
+      inSlope: 0.07321151
+      outSlope: 0.07321151
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.32835218
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.8796233
+      value: 1.0036025
+      inSlope: -1.3316065
+      outSlope: -1.3316065
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.96337694
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.96598184
+      value: -0.0037167221
+      inSlope: 0.07656091
+      outSlope: 0.07656091
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.780331
+      value: -0.019907251
+      inSlope: -0.0048508686
+      outSlope: -0.0048508686
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19002622
+      outWeight: 0.33333334
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  m_Scale: 0.25
+--- !u!23 &4572659150984825647
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572659150984825645}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &4572659150984825646
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572659150984825645}
+  m_Mesh: {fileID: 4300006, guid: b235179bd2a63d1468dd430670338c55, type: 3}

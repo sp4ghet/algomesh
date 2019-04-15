@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 357639aca57cd4c42863de0445b701cc
+timeCreated: 1503282377
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AnalFin.1
+    100002: AnalFin.2
+    100004: AnalFin.3
+    100006: CAudalFin.1.1
+    100008: CAudalFin.1.2
+    100010: CAudalFin.2.1
+    100012: CAudalFin.2.2
+    100014: Center
+    100016: DorsalFin.1
+    100018: DorsalFin.2
+    100020: DorsalFin.3
+    100022: DorsalFin.4
+    100024: DorsalFin.5
+    100026: DorsalFin.6
+    100028: DorsalFin.7
+    100030: Eye_L
+    100032: Eye_R
+    100034: Gill.1_L
+    100036: Gill.1_R
+    100038: Gill.2_L
+    100040: Gill.2_R
+    100042: Head
+    100044: Head_L.1
+    100046: Head_L.2
+    100048: Head_R.1
+    100050: Head_R.2
+    100052: JapaneseHorseMackerelMiddlePoly
+    100054: //RootNode
+    100056: LowerMouth
+    100058: LowerMouth_L
+    100060: LowerMouth_R
+    100062: PectralFin_L
+    100064: PectralFin_R
+    100066: PelvicFin_L
+    100068: PelvicFin_R
+    100070: Root
+    100072: Spine.1
+    100074: Spine.2
+    100076: Spine.3
+    100078: Spine.4
+    100080: Spine.5
+    100082: Throat.1_L
+    100084: Throat.1_R
+    100086: Throat.2_L
+    100088: Throat.2_R
+    100090: Throat.3_L
+    100092: Throat.3_R
+    100094: Tongue
+    100096: UpperMouth_L.1
+    100098: UpperMouth_L.2
+    100100: UpperMouth_R.1
+    100102: UpperMouth_R.2
+    400000: AnalFin.1
+    400002: AnalFin.2
+    400004: AnalFin.3
+    400006: CAudalFin.1.1
+    400008: CAudalFin.1.2
+    400010: CAudalFin.2.1
+    400012: CAudalFin.2.2
+    400014: Center
+    400016: DorsalFin.1
+    400018: DorsalFin.2
+    400020: DorsalFin.3
+    400022: DorsalFin.4
+    400024: DorsalFin.5
+    400026: DorsalFin.6
+    400028: DorsalFin.7
+    400030: Eye_L
+    400032: Eye_R
+    400034: Gill.1_L
+    400036: Gill.1_R
+    400038: Gill.2_L
+    400040: Gill.2_R
+    400042: Head
+    400044: Head_L.1
+    400046: Head_L.2
+    400048: Head_R.1
+    400050: Head_R.2
+    400052: JapaneseHorseMackerelMiddlePoly
+    400054: //RootNode
+    400056: LowerMouth
+    400058: LowerMouth_L
+    400060: LowerMouth_R
+    400062: PectralFin_L
+    400064: PectralFin_R
+    400066: PelvicFin_L
+    400068: PelvicFin_R
+    400070: Root
+    400072: Spine.1
+    400074: Spine.2
+    400076: Spine.3
+    400078: Spine.4
+    400080: Spine.5
+    400082: Throat.1_L
+    400084: Throat.1_R
+    400086: Throat.2_L
+    400088: Throat.2_R
+    400090: Throat.3_L
+    400092: Throat.3_R
+    400094: Tongue
+    400096: UpperMouth_L.1
+    400098: UpperMouth_L.2
+    400100: UpperMouth_R.1
+    400102: UpperMouth_R.2
+    4300000: JapaneseHorseMackerelMiddlePoly
+    9500000: //RootNode
+    13700000: JapaneseHorseMackerelMiddlePoly
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

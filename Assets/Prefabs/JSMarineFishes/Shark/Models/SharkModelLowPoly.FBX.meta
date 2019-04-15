@@ -1,0 +1,150 @@
+fileFormatVersion: 2
+guid: a4b240ebc922e41dcaf1b19d1d4a46cc
+timeCreated: 1481815480
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AnalFin.4
+    100002: Center
+    100004: Clasper1_L
+    100006: Clasper1_R
+    100008: Clasper2_L
+    100010: Clasper2_R
+    100012: Eye_L
+    100014: Eye_R
+    100016: FirstDorsalFin1
+    100018: FirstDorsalFin2
+    100020: Gill_L
+    100022: Gill_R
+    100024: Head
+    100026: Head.001
+    100028: Jaw.1_L
+    100030: Jaw.1_R
+    100032: LowerCaudalFin1
+    100034: LowerCaudalFin2
+    100036: LowerJaw
+    100038: PectoralFin.1_L
+    100040: PectoralFin.1_R
+    100042: PectoralFin.2_L
+    100044: PectoralFin.2_R
+    100046: PectoralFin.3_L
+    100048: PectoralFin.3_R
+    100050: PelvicFin_L
+    100052: PelvicFin_R
+    100054: Root
+    100056: SecondDorsalFin
+    100058: SharkLowPloly
+    100060: //RootNode
+    100062: Spine1
+    100064: Spine2
+    100066: Spine3
+    100068: Spine4
+    100070: Spine5
+    100072: Spine6
+    100074: UpperCaudalFin1
+    100076: UpperCaudalFin2
+    100078: UpperCaudalFin3
+    100080: UpperJaw
+    400000: AnalFin.4
+    400002: Center
+    400004: Clasper1_L
+    400006: Clasper1_R
+    400008: Clasper2_L
+    400010: Clasper2_R
+    400012: Eye_L
+    400014: Eye_R
+    400016: FirstDorsalFin1
+    400018: FirstDorsalFin2
+    400020: Gill_L
+    400022: Gill_R
+    400024: Head
+    400026: Head.001
+    400028: Jaw.1_L
+    400030: Jaw.1_R
+    400032: LowerCaudalFin1
+    400034: LowerCaudalFin2
+    400036: LowerJaw
+    400038: PectoralFin.1_L
+    400040: PectoralFin.1_R
+    400042: PectoralFin.2_L
+    400044: PectoralFin.2_R
+    400046: PectoralFin.3_L
+    400048: PectoralFin.3_R
+    400050: PelvicFin_L
+    400052: PelvicFin_R
+    400054: Root
+    400056: SecondDorsalFin
+    400058: SharkLowPloly
+    400060: //RootNode
+    400062: Spine1
+    400064: Spine2
+    400066: Spine3
+    400068: Spine4
+    400070: Spine5
+    400072: Spine6
+    400074: UpperCaudalFin1
+    400076: UpperCaudalFin2
+    400078: UpperCaudalFin3
+    400080: UpperJaw
+    4300000: SharkLowPloly
+    9500000: //RootNode
+    13700000: SharkLowPloly
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Root
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

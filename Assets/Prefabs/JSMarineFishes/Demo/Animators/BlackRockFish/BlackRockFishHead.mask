@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BlackRockFishHead
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: BlackLockFishLowPoly
+    m_Weight: 0
+  - m_Path: RootNode
+    m_Weight: 0
+  - m_Path: RootNode/Center
+    m_Weight: 0
+  - m_Path: RootNode/Center/Head
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Eye_L
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Eye_R
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Head_L
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Head_R
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw/Jaw.2_L
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw/Jaw.2_R
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw/tongue
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw.1_L
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw.1_R
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw.3_L
+    m_Weight: 1
+  - m_Path: RootNode/Center/Head/Jaw.3_R
+    m_Weight: 1
+  - m_Path: RootNode/Center/Spine.1
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/PectoralFin.1_L
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/PectoralFin.1_L/PectoralFin.2_L
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/PectoralFin.1_R
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/PectoralFin.1_R/PectoralFin.2_R
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/PelvicFin_L
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/PelvicFin_R
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/DorsalFin.1
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/DorsalFin.2
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/AnalFin.1
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/DorsalFin.3
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/AnalFin.2
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/DorsalFin.4
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/DorsalFin.5
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.1
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.2
+    m_Weight: 0
+  - m_Path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.3
+    m_Weight: 0

@@ -1,0 +1,354 @@
+fileFormatVersion: 2
+guid: 23235d2067fc34c58b72133d871bd768
+timeCreated: 1503110340
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AnalFin.1
+    100002: AnalFin.2
+    100004: BlackLockFishDummy
+    100006: //RootNode
+    100008: Center
+    100010: DorsalFin.1
+    100012: DorsalFin.2
+    100014: DorsalFin.3
+    100016: DorsalFin.4
+    100018: DorsalFin.5
+    100020: Eye_L
+    100022: Eye_R
+    100024: Head
+    100026: Head_L
+    100028: Head_R
+    100030: Jaw
+    100032: Jaw.1_L
+    100034: Jaw.1_R
+    100036: Jaw.2_L
+    100038: Jaw.2_R
+    100040: Jaw.3_L
+    100042: Jaw.3_R
+    100044: PectoralFin.1_L
+    100046: PectoralFin.1_R
+    100048: PectoralFin.2_L
+    100050: PectoralFin.2_R
+    100052: PelvicFin_L
+    100054: PelvicFin_R
+    100056: RootNode
+    100058: Spine.1
+    100060: Spine.2
+    100062: Spine.3
+    100064: Spine.4
+    100066: Spine.5
+    100068: Spine.6
+    100070: TailFin.1
+    100072: TailFin.2
+    100074: TailFin.3
+    100076: tongue
+    400000: AnalFin.1
+    400002: AnalFin.2
+    400004: BlackLockFishDummy
+    400006: //RootNode
+    400008: Center
+    400010: DorsalFin.1
+    400012: DorsalFin.2
+    400014: DorsalFin.3
+    400016: DorsalFin.4
+    400018: DorsalFin.5
+    400020: Eye_L
+    400022: Eye_R
+    400024: Head
+    400026: Head_L
+    400028: Head_R
+    400030: Jaw
+    400032: Jaw.1_L
+    400034: Jaw.1_R
+    400036: Jaw.2_L
+    400038: Jaw.2_R
+    400040: Jaw.3_L
+    400042: Jaw.3_R
+    400044: PectoralFin.1_L
+    400046: PectoralFin.1_R
+    400048: PectoralFin.2_L
+    400050: PectoralFin.2_R
+    400052: PelvicFin_L
+    400054: PelvicFin_R
+    400056: RootNode
+    400058: Spine.1
+    400060: Spine.2
+    400062: Spine.3
+    400064: Spine.4
+    400066: Spine.5
+    400068: Spine.6
+    400070: TailFin.1
+    400072: TailFin.2
+    400074: TailFin.3
+    400076: tongue
+    7400000: CloseFin
+    7400002: OpenFin
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CloseFin
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BlackLockFishDummy
+        weight: 1
+      - path: RootNode
+        weight: 1
+      - path: RootNode/Center
+        weight: 1
+      - path: RootNode/Center/Head
+        weight: 1
+      - path: RootNode/Center/Head/Eye_L
+        weight: 1
+      - path: RootNode/Center/Head/Eye_R
+        weight: 1
+      - path: RootNode/Center/Head/Head_L
+        weight: 1
+      - path: RootNode/Center/Head/Head_R
+        weight: 1
+      - path: RootNode/Center/Head/Jaw
+        weight: 1
+      - path: RootNode/Center/Head/Jaw/Jaw.2_L
+        weight: 1
+      - path: RootNode/Center/Head/Jaw/Jaw.2_R
+        weight: 1
+      - path: RootNode/Center/Head/Jaw/tongue
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.1_L
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.1_R
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.3_L
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.3_R
+        weight: 1
+      - path: RootNode/Center/Spine.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_L
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_L/PectoralFin.2_L
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_R
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_R/PectoralFin.2_R
+        weight: 1
+      - path: RootNode/Center/Spine.1/PelvicFin_L
+        weight: 1
+      - path: RootNode/Center/Spine.1/PelvicFin_R
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/DorsalFin.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/DorsalFin.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/AnalFin.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/DorsalFin.3
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/AnalFin.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/DorsalFin.4
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/DorsalFin.5
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: OpenFin
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BlackLockFishDummy
+        weight: 1
+      - path: RootNode
+        weight: 1
+      - path: RootNode/Center
+        weight: 1
+      - path: RootNode/Center/Head
+        weight: 1
+      - path: RootNode/Center/Head/Eye_L
+        weight: 1
+      - path: RootNode/Center/Head/Eye_R
+        weight: 1
+      - path: RootNode/Center/Head/Head_L
+        weight: 1
+      - path: RootNode/Center/Head/Head_R
+        weight: 1
+      - path: RootNode/Center/Head/Jaw
+        weight: 1
+      - path: RootNode/Center/Head/Jaw/Jaw.2_L
+        weight: 1
+      - path: RootNode/Center/Head/Jaw/Jaw.2_R
+        weight: 1
+      - path: RootNode/Center/Head/Jaw/tongue
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.1_L
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.1_R
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.3_L
+        weight: 1
+      - path: RootNode/Center/Head/Jaw.3_R
+        weight: 1
+      - path: RootNode/Center/Spine.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_L
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_L/PectoralFin.2_L
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_R
+        weight: 1
+      - path: RootNode/Center/Spine.1/PectoralFin.1_R/PectoralFin.2_R
+        weight: 1
+      - path: RootNode/Center/Spine.1/PelvicFin_L
+        weight: 1
+      - path: RootNode/Center/Spine.1/PelvicFin_R
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/DorsalFin.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/DorsalFin.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/AnalFin.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/DorsalFin.3
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/AnalFin.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/DorsalFin.4
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/DorsalFin.5
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.1
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.2
+        weight: 1
+      - path: RootNode/Center/Spine.1/Spine.2/Spine.3/Spine.4/Spine.5/Spine.6/TailFin.3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: RootNode
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

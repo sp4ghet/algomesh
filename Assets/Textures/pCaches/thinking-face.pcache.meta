@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: e186d154b3a0ef641bd705277bb71aa3
+ScriptedImporter:
+  fileIDToRecycleName:
+    2800000: position
+    2800002: color
+    11400000: PointCache
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 42ac9d422990ad246a3dc238b4b2aafe, type: 3}

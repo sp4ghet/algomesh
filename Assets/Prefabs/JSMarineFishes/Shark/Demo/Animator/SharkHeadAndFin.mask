@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SharkHeadAndFin
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Root
+    m_Weight: 0
+  - m_Path: Root/Center
+    m_Weight: 0
+  - m_Path: Root/Center/Head
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001/Eye_L
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001/Eye_R
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001/UpperJaw
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001/UpperJaw/Jaw.1_L
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001/UpperJaw/Jaw.1_R
+    m_Weight: 1
+  - m_Path: Root/Center/Head/Head.001/UpperJaw/LowerJaw
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Gill_L
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Gill_R
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/PectoralFin.1_L
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1/PectoralFin.1_L/PectoralFin.2_L
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1/PectoralFin.1_L/PectoralFin.3_L
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1/PectoralFin.1_R
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1/PectoralFin.1_R/PectoralFin.2_R
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1/PectoralFin.1_R/PectoralFin.3_R
+    m_Weight: 1
+  - m_Path: Root/Center/Spine1/Spine2
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/FirstDorsalFin1
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/FirstDorsalFin1/FirstDorsalFin2
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Clasper1_L
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Clasper1_L/Clasper2_L
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Clasper1_R
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Clasper1_R/Clasper2_R
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/PelvicFin_L
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/PelvicFin_R
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/SecondDorsalFin
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/AnalFin.4
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/LowerCaudalFin1
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/LowerCaudalFin1/LowerCaudalFin2
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/UpperCaudalFin1
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/UpperCaudalFin1/UpperCaudalFin2
+    m_Weight: 0
+  - m_Path: Root/Center/Spine1/Spine2/Spine3/Spine4/Spine5/Spine6/UpperCaudalFin1/UpperCaudalFin2/UpperCaudalFin3
+    m_Weight: 0
+  - m_Path: SharkDummy
+    m_Weight: 1

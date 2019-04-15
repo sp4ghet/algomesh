@@ -1,0 +1,6 @@
+{
+  "hlsl.additionalIncludeDirectories": [
+    ".",
+    "C:\\Program Files\\Unity\\Hub\\Editor\\2018.3.8f1\\Editor\\Data\\CGIncludes"
+  ]
+}

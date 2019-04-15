@@ -1,0 +1,150 @@
+fileFormatVersion: 2
+guid: 31be6913ba14949a0bb3a8924a29797f
+timeCreated: 1503124989
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AnalFin.002
+    100002: AnalFin.1
+    100004: AnalFin.2
+    100006: Center
+    100008: DorsalFin.1
+    100010: DorsalFin.2
+    100012: DorsalFin.3
+    100014: DorsalFin.4
+    100016: DorsalFin.5
+    100018: Eye_L
+    100020: Eye_R
+    100022: Head
+    100024: Head_L
+    100026: Head_R
+    100028: Jaw
+    100030: Jaw.1_L
+    100032: Jaw.1_R
+    100034: Jaw.2_L
+    100036: Jaw.2_R
+    100038: Jaw.3_L
+    100040: Jaw.3_R
+    100042: MahiMahiLowPoly
+    100044: MahiMahiMiddlePoly
+    100046: //RootNode
+    100048: PectoralFin.1_L
+    100050: PectoralFin.1_R
+    100052: PelvicFin_L
+    100054: PelvicFin_R
+    100056: RootNode
+    100058: Spine.1
+    100060: Spine.2
+    100062: Spine.3
+    100064: Spine.4
+    100066: Spine.5
+    100068: Spine.6
+    100070: TailFin.002
+    100072: TailFin.004
+    100074: TailFin.1
+    100076: TailFin.3
+    100078: tongue
+    400000: AnalFin.002
+    400002: AnalFin.1
+    400004: AnalFin.2
+    400006: Center
+    400008: DorsalFin.1
+    400010: DorsalFin.2
+    400012: DorsalFin.3
+    400014: DorsalFin.4
+    400016: DorsalFin.5
+    400018: Eye_L
+    400020: Eye_R
+    400022: Head
+    400024: Head_L
+    400026: Head_R
+    400028: Jaw
+    400030: Jaw.1_L
+    400032: Jaw.1_R
+    400034: Jaw.2_L
+    400036: Jaw.2_R
+    400038: Jaw.3_L
+    400040: Jaw.3_R
+    400042: MahiMahiLowPoly
+    400044: MahiMahiMiddlePoly
+    400046: //RootNode
+    400048: PectoralFin.1_L
+    400050: PectoralFin.1_R
+    400052: PelvicFin_L
+    400054: PelvicFin_R
+    400056: RootNode
+    400058: Spine.1
+    400060: Spine.2
+    400062: Spine.3
+    400064: Spine.4
+    400066: Spine.5
+    400068: Spine.6
+    400070: TailFin.002
+    400072: TailFin.004
+    400074: TailFin.1
+    400076: TailFin.3
+    400078: tongue
+    4300000: MahiMahiMiddlePoly
+    4300002: MahiMahiLowPoly
+    9500000: //RootNode
+    13700000: MahiMahiLowPoly
+    13700002: MahiMahiMiddlePoly
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: RootNode
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

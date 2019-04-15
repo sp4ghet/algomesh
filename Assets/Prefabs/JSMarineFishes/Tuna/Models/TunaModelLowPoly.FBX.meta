@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: ecd5c75b5d80c4df4a2fb9a9037512fb
+timeCreated: 1503829597
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AnalFin.1
+    100002: CAudalFin.1.1
+    100004: CAudalFin.1.2
+    100006: CAudalFin.2.1
+    100008: CAudalFin.2.2
+    100010: Center
+    100012: DorsalFin.1
+    100014: DorsalFin.2
+    100016: DorsalFin.3
+    100018: DorsalFin.4
+    100020: DorsalFin.5
+    100022: Eye_L
+    100024: Eye_R
+    100026: Head
+    100028: Head_L.1
+    100030: Head_R.1
+    100032: LowerMouth_L
+    100034: LowerMouth_R
+    100036: PectralFin_L
+    100038: PectralFin_R
+    100040: PelvicFin_L
+    100042: PelvicFin_R
+    100044: Root
+    100046: Spine.1
+    100048: Spine.2
+    100050: Spine.3
+    100052: Spine.4
+    100054: Spine.5
+    100056: Throat.1_L
+    100058: Throat.1_R
+    100060: Throat.2_L
+    100062: Throat.2_R
+    100064: Throat.3_L
+    100066: Throat.3_R
+    100068: Tongue
+    100070: TunaLowPoly
+    100072: //RootNode
+    100074: UpperMouth_L.1
+    100076: UpperMouth_R.1
+    400000: AnalFin.1
+    400002: CAudalFin.1.1
+    400004: CAudalFin.1.2
+    400006: CAudalFin.2.1
+    400008: CAudalFin.2.2
+    400010: Center
+    400012: DorsalFin.1
+    400014: DorsalFin.2
+    400016: DorsalFin.3
+    400018: DorsalFin.4
+    400020: DorsalFin.5
+    400022: Eye_L
+    400024: Eye_R
+    400026: Head
+    400028: Head_L.1
+    400030: Head_R.1
+    400032: LowerMouth_L
+    400034: LowerMouth_R
+    400036: PectralFin_L
+    400038: PectralFin_R
+    400040: PelvicFin_L
+    400042: PelvicFin_R
+    400044: Root
+    400046: Spine.1
+    400048: Spine.2
+    400050: Spine.3
+    400052: Spine.4
+    400054: Spine.5
+    400056: Throat.1_L
+    400058: Throat.1_R
+    400060: Throat.2_L
+    400062: Throat.2_R
+    400064: Throat.3_L
+    400066: Throat.3_R
+    400068: Tongue
+    400070: TunaLowPoly
+    400072: //RootNode
+    400074: UpperMouth_L.1
+    400076: UpperMouth_R.1
+    4300000: TunaLowPoly
+    9500000: //RootNode
+    13700000: TunaLowPoly
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
