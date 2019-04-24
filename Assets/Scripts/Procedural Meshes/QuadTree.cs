@@ -171,15 +171,15 @@ public class QuadTree<T> where T : IQuadTreeObject {
         return (pos, size);
     }
 
-    public void CreateObjects(ref List<(Vector3, Vector3)> infos) {
-        if (cells[0] == null) {
+    public void CreateObjects(ref List<(Vector3, Vector3)> infos, int depth=-1) {
+        if (cells[0] == null ||  depth == 0) {
             infos.Add(CreateObject());
             return;
         }
 
         for (int i=0; i < cells.Length; i++) {
             if(cells[i] != null) {
-                cells[i].CreateObjects(ref infos);
+                cells[i].CreateObjects(ref infos, depth-1);
             }   
         }
     }

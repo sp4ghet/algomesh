@@ -10,7 +10,6 @@ Properties
 SubShader
 {
 
-Tags { "RenderPipeline"="HDRenderPipeline" "RenderType" = "Opaque" "DisableBatching" = "True" "Queue" = "Geometry+10" }
 Cull Off
 
 Pass
@@ -36,7 +35,6 @@ Pass
     float _Scale;
     #include "Raymarching.cginc"
 
-    
     float4 _Color;
 
     GBufferOut frag(VertOutput i)
@@ -48,25 +46,38 @@ Pass
 
         float distance = 0.0;
         float len = 0.0;
-        float3 pos = camPos + _ProjectionParams.y * rayDir;
+        float3 pos = camPos + _ProjectionParams.y * GetCameraForward();
         float smallStep = .5;
-        
+
+        // if((pos+rayDir*maxDist).y > 0){discard;}
+
+
+        float3 finalPos = (float3)0;
+        int finalIter = 0;
         for (int i = 0; i < 200; ++i) {
             distance = DistanceFunction(pos);
             len += distance * smallStep;
             pos += rayDir * distance * smallStep;
-            if (distance < 0.001 || len > maxDist) break;
+            if (distance < 0.001 || len > maxDist) {
+                finalPos = pos;
+                finalIter = i;
+            };
         }
 
         if (distance > 0.001) discard;
 
-        float depth = GetDepth(pos);
-        float3 normal = GetNormalOfDistanceFunction(pos);
+        float depth = GetDepth(finalPos);
+        float3 normal = GetNormalOfDistanceFunction(finalPos);
         
+        float manhattan = abs(finalPos.x) + abs(finalPos.z);
+        manhattan = abs(manhattan)-_Time.y;
+
+        float4 c = _Color * step(fmod(manhattan, .3), .15);
+
         GBufferOut o;
-        o.diffuse  = _Color;
-        o.specular = 0;
-        o.emission = float4(0,0,0,0);
+        o.diffuse  = 0;
+        o.specular = float4((float3)1,1);
+        o.emission = c*5;
         o.depth    = depth;
         o.normal   = float4(normal, 1.0);
 

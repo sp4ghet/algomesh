@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 //From:
 //http://wiki.unity3d.com/index.php/ProceduralPrimitives#C.23_-_IcoSphere
-static class IcoSphere {
+public static class IcoSphere {
     private struct TriangleIndices {
         public int v1;
         public int v2;
@@ -49,7 +49,7 @@ static class IcoSphere {
         return i;
     }
 
-    public static Mesh GenerateMesh(float radius, int recursionLevel) {
+    public static Mesh GenerateMesh(float radius, int recursionLevel=1) {
         Mesh mesh = new Mesh();
 
         List<Vector3> vertList = new List<Vector3>();

@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour {
     RadialMeshGenerator radialMesh;
 
     [SerializeField]
-    QuadTreeInstancing quadtreePopper;
+    List<QuadTreeInstancing> quadtreePoppers;
 
     private PostProcessProfile profile;
     private Glitch glitch;

@@ -1,29 +1,28 @@
 #include "Assets/Shaders/Util/Unity/UnityCG.hlsl"
-#include "Assets/Shaders/Util/Unity/UnityLightingCommon.hlsl"
-#include "Assets/Shaders/PostProcess/2dsdf.hlsl"
-#include "Assets/Shaders/Util/constants.hlsl"
 
 struct VertInput
 {
     float4 vertex : POSITION;
     float3 normal : NORMAL;
-    float2 uv : TEXCOORD0;
 };
 
-struct VertObjectOutput
+struct VertOutput
 {
     float4 vertex      : SV_POSITION;
-    float2 uv          : TEXCOORD0;
     float4 screenPos   : TEXCOORD1;
     float4 worldPos    : TEXCOORD2;
     float3 worldNormal : TEXCOORD3;
+};
+
+struct GeometryOutput{
+    VertOutput vert;
+    float3 barycentric : TEXCOORD9;
 };
 
 struct VertShadowInput
 {
     float4 vertex : POSITION;
     float3 normal : NORMAL;
-    float2 uv1    : TEXCOORD1;
 };
 
 struct VertShadowOutput
@@ -43,17 +42,15 @@ struct GBufferOut
     float depth    : SV_Depth;
 };
 
-sampler2D _MainTex;
-float4 _MainTex_ST;
+float4 _Color;
 
-VertObjectOutput vert_object(VertInput v)
+VertOutput vert_object(VertInput v)
 {
-    VertObjectOutput o;
+    VertOutput o;
     o.vertex = UnityObjectToClipPos(v.vertex);
     o.screenPos = o.vertex;
-    o.uv = TRANSFORM_TEX(v.uv, _MainTex);
     o.worldPos = mul(unity_ObjectToWorld, v.vertex);
-    o.worldNormal = mul(unity_ObjectToWorld, float4(v.normal,1));
+    o.worldNormal = v.normal;
     return o;
 }
 
@@ -67,54 +64,50 @@ float GetDepth(float3 pos)
 #endif 
 }
 
-float4 _LightColor;
-float4x4 _LightMatrix0;
 
-float tri(float2 uv){
-    return smoothstep(0.99, 1.01, uv.y/uv.x);
-}
-
-
-float hex(float2 uv){
-    float d = polySDF(uv, 6);
-    return fill(d, 0.6);
-}
-
-
-
-GBufferOut frag(VertObjectOutput i)
+GBufferOut frag(GeometryOutput input)
 {
     GBufferOut o;
-    // sample the texture
-    fixed4 tree = tex2D(_MainTex, i.uv);
 
-    float2 uv = tree.rg;
-    float2 duv = ddx(uv) + ddy(uv);
-    float2 st = (uv * 2) - 1;
-
-    int numStates = 4;
-    int state = int(floor( tree.b * 3));
-
-    float d = 0;
-    
-    if(state == 0){
-        d = tri(uv);
-    }else if(state == 1){
-        d = hex(st);
-    }else if(state == 2){
-        d = fill(heartSDF(st), 0.75);
-    }else if(state == 3){    
-        d = stroke(circleSDF(st), 0.5, 0.03);
-    }
-
-
-    float4 color = float4(0,0, d, 1);
-    //float4 color = d;
+    float3 bary = input.barycentric;
+    float3 delta = fwidth(bary);
+    bary = step(delta*.5, bary);
+    float wire = min(bary.x, min(bary.y, bary.z));
+    float4 color = _Color * (wire);
 
     o.diffuse = color;
     o.specular = float4(0,0,0,0);
-    o.emission = color * 0.2;
-    o.normal = float4(i.worldNormal * 0.5 + 0.5, 1);;
-    o.depth = GetDepth(i.worldPos.xyz);
+    o.emission = color*unity_AmbientSky*.25 + color*.25;
+    o.normal = float4(input.vert.worldNormal, 1);;
+    o.depth = GetDepth(input.vert.worldPos.xyz);
     return o;
+}
+
+[maxvertexcount(3)] 
+void geom(triangle VertOutput i[3],
+          inout TriangleStream<GeometryOutput> stream)
+{
+    float3 p1 = i[0].worldPos.xyz;
+    float3 p2 = i[1].worldPos.xyz;
+    float3 p3 = i[2].worldPos.xyz;
+
+    float3 triNormal = normalize(cross(p2-p1, p3-p1));
+    // triNormal = float3(0,0,0);
+
+    GeometryOutput g1, g2, g3;
+    g1.vert = i[0];
+    g2.vert = i[1];
+    g3.vert = i[2];
+
+    g1.vert.worldNormal = triNormal;
+    g2.vert.worldNormal = triNormal;
+    g3.vert.worldNormal = triNormal;
+
+    g1.barycentric = float3(1,0,0);
+    g2.barycentric = float3(0,1,0);
+    g3.barycentric = float3(0,0,1);
+
+    stream.Append(g1);
+	stream.Append(g2);
+	stream.Append(g3);
 }

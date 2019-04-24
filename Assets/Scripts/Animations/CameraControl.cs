@@ -1,9 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Klak.Math;
 
-public class Damping : MonoBehaviour
+public class CameraControl : MonoBehaviour
 {
+    public enum CameraMode : int{
+        focusCenter = 0,
+        manualCycle = 1,
+        tempoCycle = 2
+    }
+
+    [Serializeable]
+    public class CameraPosition{
+        bool lookAtFocus;
+        List<Vector3> positions;
+        Transform focus;
+    }
+
     #region Editable Fields
     [SerializeField]
     bool m_enablePos;
@@ -20,10 +34,10 @@ public class Damping : MonoBehaviour
     float m_posSmoothTime;
 
     [SerializeField]
-    bool m_enableRot;
+    List<Vector3> cameraPositions;
 
     [SerializeField]
-    Transform lookAtTarget;
+    List<Transform> lookAtTargets;
 
     [SerializeField]
     bool m_enableBrownian;
@@ -57,9 +71,9 @@ public class Damping : MonoBehaviour
             m_brownianTime[i] += frequency * dt;
 
         var n = new Vector3(
-            Klak.Math.Perlin.Fbm(m_brownianTime[0], fractalOctave),
-            Klak.Math.Perlin.Fbm(m_brownianTime[1], fractalOctave),
-            Klak.Math.Perlin.Fbm(m_brownianTime[2], fractalOctave));
+            Perlin.Fbm(m_brownianTime[0], fractalOctave),
+            Perlin.Fbm(m_brownianTime[1], fractalOctave),
+            Perlin.Fbm(m_brownianTime[2], fractalOctave));
 
         n = Vector3.Scale(n, scale);
         n *= amplitude * (1 / 0.75f);

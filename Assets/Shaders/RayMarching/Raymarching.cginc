@@ -15,7 +15,7 @@ float  GetCameraMaxDistance() { return _ProjectionParams.z - _ProjectionParams.y
 float2 GetScreenPos(float4 screenPos)
 {
 #if UNITY_UV_STARTS_AT_TOP
-    screenPos.y *= -1.0;
+     screenPos.y *= -1.0;
 #endif
     screenPos.x *= _ScreenParams.x / _ScreenParams.y;
     return screenPos.xy / screenPos.w;
@@ -57,11 +57,11 @@ float3 GetRayDirectionForShadow(float4 screenPos)
 float GetDepth(float3 pos)
 {
     float4 vpPos = mul(UNITY_MATRIX_VP, float4(pos, 1.0));
-#if defined(SHADER_TARGET_GLSL)
-    return (vpPos.z / vpPos.w) * 0.5 + 0.5;
-#else 
+// #if defined(SHADER_TARGET_GLSL)
+    // return (vpPos.z / vpPos.w) * 0.5 + 0.5;
+// #else 
     return vpPos.z / vpPos.w;
-#endif 
+// #endif 
 }
 
 float3 GetNormalOfDistanceFunction(float3 pos)

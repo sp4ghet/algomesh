@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Torus {
+
     public static Mesh GenerateMesh(float m_outerRadius = 1f, float m_innerRadius = 0.3f, int m_radialSegments = 24, int m_sideSegments = 18) {
         Mesh mesh = new Mesh();
 
-        #region Vertices		
+        #region Vertices	
         Vector3[] vertices = new Vector3[(m_radialSegments + 1) * (m_sideSegments + 1)];
         float _2pi = Mathf.PI * 2f;
         for (int seg = 0; seg <= m_radialSegments; seg++) {

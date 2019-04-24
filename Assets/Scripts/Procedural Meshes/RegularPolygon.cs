@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularPolygon
+public static class RegularPolygon
 {
-    public static Mesh GenerateMesh(int subdivisions, int radius) {
+
+    public static Mesh GenerateMesh(float radius, int subdivisions=3, Mesh mesh=null) {
+        if(mesh == null){
+            mesh = new Mesh();
+        }else{
+            mesh.Clear();
+        }
         int trianglePerSubdivision = 24;
         int edgesPerSubdivision = 4;
         Vector3[] vertices = new Vector3[subdivisions*4];
         int[] tris = new int[subdivisions * 24];
-        Mesh mesh = new Mesh();
         float side = 0.5f;
 
         for (int i = 0; i < subdivisions; i++) {
@@ -58,4 +63,5 @@ public class RegularPolygon
         mesh.RecalculateBounds();
         return mesh;
     }
+
 }
