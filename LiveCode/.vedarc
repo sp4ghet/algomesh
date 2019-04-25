@@ -1,0 +1,10 @@
+{
+  "audio": true, // Enable audio input
+  "camera": true, // Enable WebCam input
+
+  IMPORTED: {
+    image: {
+      "PATH": "./images/1.jpg",
+    },
+  },
+}
