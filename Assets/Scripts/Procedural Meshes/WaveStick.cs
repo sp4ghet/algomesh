@@ -7,7 +7,8 @@ public class WaveStick : MonoBehaviour {
 
     [SerializeField]
     float amplifier = 2000;
-    
+
+    float radius = 10f;
     int sticks = 56;
     float speed = 5;
 
@@ -15,6 +16,9 @@ public class WaveStick : MonoBehaviour {
     Mesh mesh;
     Vector3[] vertices;
     private bool bendTunnel;
+
+    public float Radius { get => radius; set => radius = value; }
+    public float Speed { get => speed; set => speed = value; }
 
     void UpdateMesh(float[] samples) {
         UpdateVertices(samples);
@@ -117,9 +121,8 @@ public class WaveStick : MonoBehaviour {
 
     // point along a spiral based on how far along it is
     Vector3 Spiral(float t, Vector3 offset, float phase=0) {
-        t += Time.time / 20f ;
+        t += Time.time * speed / 100f ;
         t = t % 1;
-        float radius = 10;
         float turns = 3*2*Mathf.PI;
         float distance = -40;
 

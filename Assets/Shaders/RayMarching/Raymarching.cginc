@@ -68,9 +68,9 @@ float3 GetNormalOfDistanceFunction(float3 pos)
 {
     float d = 0.001;
     return 0.5 + 0.5 * normalize(float3(
-        DistanceFunction(pos + float3(  d, 0.0, 0.0)) - DistanceFunction(pos + float3( -d, 0.0, 0.0)),
-        DistanceFunction(pos + float3(0.0,   d, 0.0)) - DistanceFunction(pos + float3(0.0,  -d, 0.0)),
-        DistanceFunction(pos + float3(0.0, 0.0,   d)) - DistanceFunction(pos + float3(0.0, 0.0,  -d))));
+        DistanceFunction(pos + float3(  d, 0.0, 0.0)).x - DistanceFunction(pos + float3( -d, 0.0, 0.0)).x,
+        DistanceFunction(pos + float3(0.0,   d, 0.0)).x - DistanceFunction(pos + float3(0.0,  -d, 0.0)).x,
+        DistanceFunction(pos + float3(0.0, 0.0,   d)).x - DistanceFunction(pos + float3(0.0, 0.0,  -d)).x));
 }
 
 #ifdef OBJ_RAYMARCH

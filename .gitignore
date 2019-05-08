@@ -5,6 +5,7 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 Capture/
+LiveCode/veda-recordings/
 
 # Visual Studio cache directory
 .vs/

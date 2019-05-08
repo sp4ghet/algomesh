@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Klak.Math;
 
@@ -11,11 +12,12 @@ public class CameraControl : MonoBehaviour
         tempoCycle = 2
     }
 
-    [Serializeable]
+    [Serializable]
     public class CameraPosition{
-        bool lookAtFocus;
-        List<Vector3> positions;
-        Transform focus;
+        public bool lookAtFocus;
+        public bool shouldFollow;
+        public List<Vector3> positions;
+        public Transform focus;
     }
 
     #region Editable Fields
@@ -23,21 +25,12 @@ public class CameraControl : MonoBehaviour
     bool m_enablePos;
 
     [SerializeField]
-    Vector3 m_minRandomPosition;
-
-    [SerializeField]
-    Vector3 m_maxRandomPosition;
+    List<CameraPosition> m_motifs;
     
     [Space]
 
     [SerializeField, Range(0f, 2f)]
     float m_posSmoothTime;
-
-    [SerializeField]
-    List<Vector3> cameraPositions;
-
-    [SerializeField]
-    List<Transform> lookAtTargets;
 
     [SerializeField]
     bool m_enableBrownian;
@@ -51,6 +44,9 @@ public class CameraControl : MonoBehaviour
     Vector3 m_prevPos;
     Vector3 m_posVelocity = Vector3.zero;
     Vector3 m_targetPos;
+
+    CameraPosition m_currentMotif;
+    CameraPosition m_origin;
     #endregion
 
     #region Properties
@@ -62,9 +58,33 @@ public class CameraControl : MonoBehaviour
             m_targetPos = value;
         }
     }
+
+    public int MotifCount {
+        get {
+            return m_motifs.Count;
+        }
+    }
     #endregion
 
-    #region Methods
+    #region Public Methods
+    public void CycleMotif(int idx) {
+        if (m_currentMotif == null) {
+            m_currentMotif = m_origin;
+            return;
+        }
+        if (idx > m_motifs.Count) { idx = idx % m_motifs.Count; }
+        m_currentMotif = m_motifs[idx];
+    }
+
+    public void CyclePositions() {
+        //assumes m_currentMotif is set
+        int idx = m_currentMotif.positions.FindIndex(x => x == TargetPos);
+        TargetPos = m_currentMotif.positions[(idx + 1) % m_currentMotif.positions.Count];
+    }
+    #endregion
+
+    #region Private Methods
+
     private Vector3 BrownianPosition(float frequency, int fractalOctave, float amplitude, Vector3 scale) {
         var dt = Time.deltaTime;
         for (var i = 0; i < 3; i++)
@@ -80,12 +100,6 @@ public class CameraControl : MonoBehaviour
         return n;
     }
 
-    void Randomize() {
-        float x = Random.Range(m_minRandomPosition.x, m_maxRandomPosition.x);
-        float y = Random.Range(m_minRandomPosition.y, m_maxRandomPosition.y);
-        float z = Random.Range(m_minRandomPosition.z, m_maxRandomPosition.z);
-        TargetPos = new Vector3(x, y, z);
-    }
     #endregion
 
     #region MonoBehaviours
@@ -96,8 +110,18 @@ public class CameraControl : MonoBehaviour
         m_initialPos = transform.position;
         TargetPos = transform.position;
         for (int i=0; i < m_brownianTime.Length; i++) {
-            m_brownianTime[i] = Random.Range(-10000.0f, 0.0f);
+            m_brownianTime[i] = UnityEngine.Random.Range(-10000.0f, 0.0f);
         }
+
+        m_origin = new CameraPosition();
+        m_origin.focus = GameObject.Find("Origin").transform;
+        m_origin.lookAtFocus = true;
+        m_origin.positions = new List<Vector3>(new Vector3[] { transform.position, new Vector3(0, 0, -7) });
+        m_currentMotif = m_origin;
+
+        m_motifs.Insert(0, m_origin);
+
+        CycleMotif(0);
     }
 
 
@@ -105,22 +129,30 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.frameCount % 1000 == 0) {
-            Randomize();
-        }
-
         Vector3 target = TargetPos;
 
+        if (m_currentMotif.shouldFollow) {
+            target = m_currentMotif.focus.position + TargetPos; 
+        }
 
         if (m_enableBrownian) {
-            target = TargetPos + BrownianPosition(0.2f, 3, 0.5f, Vector3.one);
+            target += BrownianPosition(0.2f, 3, 0.5f, Vector3.one);
         }
 
         if (m_enablePos) {
             transform.position = Vector3.SmoothDamp(transform.position, target, ref m_posVelocity, m_posSmoothTime);
         }
+        else {
+            m_currentMotif = m_origin;
+        }
 
-        transform.rotation = Quaternion.LookRotation(lookAtTarget.position - transform.position);
+        if (m_currentMotif.lookAtFocus) {
+            transform.rotation = Quaternion.LookRotation(m_currentMotif.focus.position - transform.position);
+        }
+        else {
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+        }
+
     }
     #endregion
 }

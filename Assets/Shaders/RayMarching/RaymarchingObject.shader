@@ -61,9 +61,9 @@ GBufferOut frag(VertObjectOutput i)
     }
 
     GBufferOut o;
-    o.diffuse = float4(1.0, 1.0, 1.0, 1.0);
-    o.specular = float4(0.35, 0.35, 0.35, 1.0);
-    o.emission = 0.0f;
+    o.diffuse = float4(0, 0, 0, .05);
+    o.specular = float4(.15, .15, .15, 1);
+    o.emission = 0.1f;
     o.normal = float4(normal, 1.0);
     o.depth = depth;
 

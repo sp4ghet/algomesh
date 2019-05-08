@@ -83,11 +83,11 @@ float4 Frag(VaryingsDefault attr) : SV_Target
 
     float a = smoothstep(0.2, 0.8, frac(state));
     if(pair == 0){
-        d = lerp(logo(uv), pointyOctagon(st*(1.9-a)), a);
+        d = lerp(eye(st), pointyOctagon(st*(1.9-a)), a);
     }else if(pair == 1){
         d = lerp(pointyOctagon(st*(a+0.9)), twistSquare(st*(1.6-a)), a);
     }else if(pair == 2){
-        d = lerp(twistSquare(st*(a+0.6)), eye(st*(1.9-a)), a);
+        d = lerp(twistSquare(st*(a+0.6)), logo(uv), a);
     }
 
     float4 color = lerp(screen, 1-screen, d);

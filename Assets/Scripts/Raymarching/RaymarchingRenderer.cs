@@ -2,7 +2,7 @@
 using UnityEngine.Rendering;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
+
 public class RaymarchingRenderer : MonoBehaviour
 {
     Dictionary<Camera, CommandBuffer> cameras_ = new Dictionary<Camera, CommandBuffer>();
@@ -16,12 +16,19 @@ public class RaymarchingRenderer : MonoBehaviour
     [SerializeField]
     private Texture2D spectrum;
 
-    private int bpmId;
-    private int colorId;
+    private float floorSens = 0f;
+    private float gridSize = 0f;
+    private float speed = 0f;
+
+    float progress;
+    float rotationAngle;
 
     public float Bpm { get => bpm; set => bpm = value; }
     public Color MainColor { get => mainColor; set => mainColor = value; }
     public Texture2D Spectrum { get => spectrum; set => spectrum = value; }
+    public float AudioReactiveSensitivity { get => floorSens; set => floorSens = value; }
+    public float GridSize { get => gridSize; set => gridSize = value; }
+    public float Speed { get => speed; set => speed = value; }
 
     Mesh GenerateQuad()
     {
@@ -51,8 +58,6 @@ public class RaymarchingRenderer : MonoBehaviour
 
     void OnEnable()
     {
-        bpmId = Shader.PropertyToID("_Bpm");
-        colorId = Shader.PropertyToID("_Color");
         spectrum = new Texture2D(1, 1, TextureFormat.R8, false, true);
         spectrum.SetPixel(0, 0, Color.white);
         spectrum.Apply();
@@ -69,6 +74,8 @@ public class RaymarchingRenderer : MonoBehaviour
         UpdateCommandBuffer();
     }
 
+    float prevSound;
+
     void UpdateCommandBuffer()
     {
         var act = gameObject.activeInHierarchy && enabled;
@@ -77,6 +84,19 @@ public class RaymarchingRenderer : MonoBehaviour
             return;
         }
 
+
+        rotationAngle += Time.deltaTime * Mathf.Abs(prevSound - AudioReactive.I.RmsHigh);
+        prevSound = AudioReactive.I.RmsHigh;
+        progress += speed * Time.deltaTime;
+
+        material.SetFloat("_Floor", floorSens);
+        material.SetFloat("_Grid", gridSize);
+        material.SetFloat("_GridRotation", rotationAngle);
+        material.SetFloat("_SpeedProgress", progress);
+        material.SetFloat("_Bpm", Bpm);
+        material.SetColor("_Color", MainColor);
+        material.SetTexture("_MainTex", spectrum);
+
         var camera = Camera.current;
         if (!camera || cameras_.ContainsKey(camera)) return;
 
@@ -84,9 +104,6 @@ public class RaymarchingRenderer : MonoBehaviour
 
         var buffer = new CommandBuffer();
         buffer.name = "Raymarching";
-        material.SetFloat(bpmId, Bpm);
-        material.SetColor(colorId, MainColor);
-        material.SetTexture("_MainTex", spectrum);
         buffer.DrawMesh(quad_, Matrix4x4.identity, material, 0, 0);
         camera.AddCommandBuffer(pass, buffer);
         cameras_.Add(camera, buffer);

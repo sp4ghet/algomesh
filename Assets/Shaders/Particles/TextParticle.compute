@@ -9,14 +9,18 @@ Texture2D<float4> SpawnColor;
 
 RWStructuredBuffer<float4> _ParticlePosBuffer;
 RWStructuredBuffer<float4> _ParticleColorBuffer;
+RWStructuredBuffer<int> _AliveCounter;
+int _AliveCount;
+
 
 #define BLOCK_SIZE 256
 
-float3 _Scale;
 
 //SpawnParticles uniforms
 uint _ParticleCount;
 float _SpawnRate;
+
+
 uint _PCacheTexWidth;
 bool _UseColor;
 float _AspectRatio;
@@ -24,22 +28,37 @@ float _AspectRatio;
 //ParticlePos uniforms
 float _DeltaTime;
 float _Time;
-float _Lifetime;
+float _LifeTime;
+float _CurlIntensity;
+float _ForwardIntensity;
+float _ExplodeIntensity;
 
 #include "Assets/Shaders/Util/3dnoise.hlsl"
 #include "Assets/Shaders/Util/curve.hlsl"
 
 [numthreads(BLOCK_SIZE, 1, 1)]
 void SpawnParticles(uint3 id : SV_DispatchThreadID){
-    const unsigned int ParticleID = id.x;
+    AllMemoryBarrierWithGroupSync();
+    uint aliveCount = _AliveCounter[0];
+    aliveCount = max(aliveCount, 0);
+    AllMemoryBarrierWithGroupSync();
+
+    uint _DeadCount = _ParticleCount - aliveCount;
+    uint spawnCount = min(_DeadCount, 500);
+
+    const uint ParticleID = id.x;
     float4 pos = _ParticlePosBuffer[ParticleID];
-    if(ParticleID > _ParticleCount * _SpawnRate || pos.w > 1){
-        return;
+    if(id.x > aliveCount+spawnCount || pos.w > 0){return;}
+    
+    if(aliveCount < _ParticleCount){
+        InterlockedAdd(_AliveCounter[0], 1);
     }
+    
+
     uint y = ParticleID/_PCacheTexWidth;
     uint x = ParticleID % _PCacheTexWidth;
 
-    pos = float4(SpawnTex[uint2(x,y)].xyz,0);
+    pos = float4(SpawnTex[uint2(x,y)].xyz,_LifeTime);
     if(_UseColor){
         _ParticleColorBuffer[ParticleID] = SpawnColor[uint2(x,y)];
     }
@@ -49,21 +68,29 @@ void SpawnParticles(uint3 id : SV_DispatchThreadID){
 
 [numthreads(BLOCK_SIZE, 1,1)]
 void ParticlePos (uint3 id : SV_DispatchThreadID)
-    //uint3 Gid : SV_GroupID, 
-    //uint3 GTid : SV_GroupThreadID, // vec3 of thread ID within group
-    //uint GI : SV_GroupIndex // flattened group ID
 {
-    const unsigned int ParticleID = id.x;
+    AllMemoryBarrierWithGroupSync();
+    uint aliveCount = _AliveCounter[0];
+    AllMemoryBarrierWithGroupSync();
 
+    const uint ParticleID = id.x;
     float4 pos = _ParticlePosBuffer[ParticleID];
-    
-    float intensity = almostIdentity(pos.w, 0.1, 0);
+    if(ParticleID > aliveCount){return;}
 
-    float3 velocity = curlC( (pos.xyz) + fmod(_Time, 100000) - (fmod(_Time, _Lifetime))) * intensity * 0.1 * (1/_Lifetime);
-    
-    pos.w += _DeltaTime / _Lifetime;
+    float intensity = _CurlIntensity;
+    intensity = saturate(intensity) * 2. + 0.05;
 
-    pos.xyz += velocity;
+    float currentIterOffset = fmod(_Time, 10000) - fmod(_Time, 5);
+    float3 velocity = curlC(pos.xyz + currentIterOffset) * intensity;
+    velocity += _ForwardIntensity * float3(0,0, pos.z)*step(pos.z,0)*3/_LifeTime;
+    velocity += _ExplodeIntensity * normalize(pos.xyz)*5;
+    
+    pos.w -= _DeltaTime + 1e-2*nrand(float2(_Time, id.x*1.2));
+    pos.xyz += velocity * _DeltaTime;
+
+    if(pos.w < 0 && aliveCount > 0){
+        InterlockedAdd(_AliveCounter[0], -1);    
+    }
 
     _ParticlePosBuffer[ParticleID] = pos;
 }

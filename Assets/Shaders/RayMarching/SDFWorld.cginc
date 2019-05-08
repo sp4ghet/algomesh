@@ -5,24 +5,51 @@
 
 #define E 2.71828182
 
-float _Bpm;
-sampler2D _MainTex;
-
-float DistanceFunction(float3 pos)
-{
+float soundFloor(float3 pos){
     float d;
+
     pos.y += 2;
 
-    float size = 1.;
+    float size = .5;
     int2 idx = pos.xz/size - fmod(pos.xz, size);
-    float fftRadius = 40;
-    float x = length(idx)/40;
+    float fftRadius = 100/size;
+    float x = length(idx)/fftRadius;
     float yOffset = tex2D(_MainTex, float2(x, 0)).r * (1-step(1, x));
 
     float3 newPos = repeat(pos, size);
 
-    d = roundBox(float3(newPos.x, pos.y - yOffset, newPos.z), (float3).6*size, .1*size);
-    // d = sphere(float3(newPos.x, pos.y - yOffset, newPos.z), .4*size);
+    newPos = float3(newPos.x, pos.y - yOffset*_Floor, newPos.z);
+    //newP = rotate(newP, yOffset, normalize(float3(1,1,1)));
+
+    d = roundBox(newPos, (float3).7*size, .15*size);  
+    return d;
+}
+
+float spatialGrid(float3 pos){
+    float d;
+
+    float gridSize = 1;
+    pos.z += _SpeedProgress;
+    pos.x += sin(pos.z)*.25;
+    pos.y += cos(pos.z)*.25;
+
+    pos = repeat(pos, gridSize);
+    
+    pos = rotate(pos, _GridRotation, float3(1,1,1));
+
+    d = sdOctahedron(pos, .15 * _Grid);
 
     return d;
+}
+
+float2 DistanceFunction(float3 pos)
+{
+    float d = 999999999.;
+    float mat = 0;
+    float soundPlane = soundFloor(pos);
+    float grid = spatialGrid(pos);
+    mat = step(grid, soundPlane);
+    d = min(soundPlane, grid);
+
+    return float2(d, mat);
 }

@@ -25,4 +25,9 @@ float gain(float x, float k)
     return (x<0.5)?a:1.0-a;
 }
 
+float nrand(float2 uv)
+{
+    return frac(sin(dot(uv, float2(12.9898, 78.233))) * 43758.5453);
+}
+
 #endif //CURVES_H

@@ -6,7 +6,7 @@ namespace Kino.PostProcessing
     #region Effect settings
 
     [System.Serializable]
-    [PostProcess(typeof(RecolorRenderer), PostProcessEvent.BeforeStack, "Kino/Recolor")]
+    [PostProcess(typeof(RecolorRenderer), PostProcessEvent.AfterStack, "Kino/Recolor")]
     public sealed class Recolor : PostProcessEffectSettings
     {
         public enum EdgeSource { Color, Depth, Normal }

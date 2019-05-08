@@ -14,7 +14,7 @@ public class AudioReactive : MonoBehaviour {
 
     const int sampleCount = 1024;
     float[] samples;
-    float[] pastAmplifier = new float[256];
+    float[] pastAmplifier = new float[32];
     int currentIndex = 0;
 
     Texture2D spectrum;
@@ -25,7 +25,7 @@ public class AudioReactive : MonoBehaviour {
     Lasp.FilterType lowPass  = Lasp.FilterType.LowPass;
     Lasp.FilterType byPass   = Lasp.FilterType.Bypass;
 
-    const float kSilence = -40; // -40 dBFS = silence
+    const float kSilence = -90; // -40 dBFS = silence
 
     float[] _highWave, _bandWave, _lowWave, _byWave;
     const int waveSize = 512;

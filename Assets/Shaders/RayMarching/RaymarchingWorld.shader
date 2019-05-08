@@ -5,6 +5,8 @@ Properties
 {
     _MainTex ("Main Texture", 2D) = "" {}
     _Color ("Color", Color) = (0,0,0,0)
+    _Floor ("Floor Sensitivity", Float) = 0
+    _Grid ("Grid Size", Float) = 0
 }
 
 SubShader
@@ -30,12 +32,21 @@ Pass
     #pragma multi_compile ___ UNITY_HDR_ON
 
     #define PI 3.14159265358979
-
-    #include "SDFWorld.cginc"
-    float _Scale;
-    #include "Raymarching.cginc"
+    #define EPSILON 1e-5
 
     float4 _Color;
+    float _Scale;    
+    float _Floor;
+    float _Grid;
+    float _Bpm;
+    float _GridRotation;
+    float _SpeedProgress;
+    sampler2D _MainTex;
+
+    #include "SDFWorld.cginc"
+    #include "Raymarching.cginc"
+    #include "shading.cginc"
+
 
     GBufferOut frag(VertOutput i)
     {
@@ -49,13 +60,13 @@ Pass
         float3 pos = camPos + _ProjectionParams.y * GetCameraForward();
         float smallStep = .5;
 
-        // if((pos+rayDir*maxDist).y > 0){discard;}
-
 
         float3 finalPos = (float3)0;
         int finalIter = 0;
+        float2 dMat;
         for (int i = 0; i < 200; ++i) {
-            distance = DistanceFunction(pos);
+            dMat = DistanceFunction(pos);
+            distance = dMat.x;
             len += distance * smallStep;
             pos += rayDir * distance * smallStep;
             if (distance < 0.001 || len > maxDist) {
@@ -69,18 +80,10 @@ Pass
         float depth = GetDepth(finalPos);
         float3 normal = GetNormalOfDistanceFunction(finalPos);
         
-        float manhattan = abs(finalPos.x) + abs(finalPos.z);
-        manhattan = abs(manhattan)-_Time.y;
 
-        float4 c = _Color * step(fmod(manhattan, .3), .15);
-
-        GBufferOut o;
-        o.diffuse  = 0;
-        o.specular = float4((float3)1,1);
-        o.emission = c*5;
+        GBufferOut o = shading(pos, normal, dMat.y);
         o.depth    = depth;
         o.normal   = float4(normal, 1.0);
-
 #ifndef UNITY_HDR_ON
         o.emission = exp2(-o.emission);
 #endif

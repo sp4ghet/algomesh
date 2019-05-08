@@ -24,13 +24,28 @@ public class SceneController : MonoBehaviour {
     GPUBoids boids;
 
     [SerializeField]
+    WaveStick waveStick;
+
+    [SerializeField]
     TextureParticle gpgpuParticle;
 
     [SerializeField]
     RadialMeshGenerator radialMesh;
 
     [SerializeField]
+    GameObject quadTreePopperParent;
+
+    [SerializeField]
     List<QuadTreeInstancing> quadtreePoppers;
+
+    [SerializeField]
+    CameraControl camControl;
+
+    [SerializeField]
+    Klak.Ndi.NdiReceiver liveCode;
+
+    [SerializeField]
+    Kvant.Warp spaceWarp;
 
     private PostProcessProfile profile;
     private Glitch glitch;
@@ -54,7 +69,7 @@ public class SceneController : MonoBehaviour {
         AudioReactiveManager.I.Bpm = bpm;
         worldRaymarch.Bpm = bpm;
         radialMesh.Bpm = bpm;
-        gpgpuParticle.Bpm = bpm;
+        gpgpuParticle.Lifetime = 60f / bpm;
     }
 
     public void SetBpm() {
@@ -72,6 +87,16 @@ public class SceneController : MonoBehaviour {
         inversion.state.value = value;
     }
 
+    int motifIdx;
+    public void NextCameraMotif() {
+        motifIdx = (motifIdx + 1) % camControl.MotifCount;
+        camControl.CycleMotif(motifIdx);
+    }
+
+    internal void NextCameraPosition() {
+        camControl.CyclePositions();
+    }
+
     public void SetGlitch(float knobValue) {
         glitch.progress.value = knobValue * Glitch.MaxProgress;
         chromaticAberration.intensity.value = knobValue;
@@ -86,24 +111,134 @@ public class SceneController : MonoBehaviour {
         recolor.fillOpacity.value = value;
     }
 
-    private float volumeLerp(float t) {
-       return Mathf.Lerp(10, 40, t);
-    }
-
     public void SetLowThresh(float value) {
-        AudioReactiveManager.I.LowThresh = volumeLerp(value);
-        radialMesh.MeshThreshold = volumeLerp(value);
+        AudioReactiveManager.I.LowThresh = Mathf.Lerp(40, 80, value);
+        radialMesh.MeshThreshold = Mathf.Lerp(40, 80, value);
     }
 
     public void SetBandThresh(float value) {
-        AudioReactiveManager.I.BandThresh = volumeLerp(value);
+        AudioReactiveManager.I.BandThresh = Mathf.Lerp(35, 70, value);
     }
 
     public void SetHighThresh(float value) {
-        AudioReactiveManager.I.HighThresh = volumeLerp(value);
+        AudioReactiveManager.I.HighThresh = Mathf.Lerp(30, 60, value);
     }
 
-    private void OnEnable() {
+
+    public void SetWaveStickScale(float knobValue) {
+        waveStick.gameObject.SetActive(knobValue > float.Epsilon);
+        waveStick.transform.localScale = Vector3.one * knobValue;
+    }
+
+    public void SetRadialMeshScale(float knobValue) {
+        radialMesh.gameObject.SetActive(knobValue > float.Epsilon);
+        radialMesh.transform.localScale = Vector3.one * knobValue;
+    }
+
+    public void SetObjectSpaceScale(float value) {
+        raymarchObject.gameObject.SetActive(value > float.Epsilon);
+        raymarchObject.transform.localScale = Vector3.one * 3f * value;
+    }
+
+
+    public void SetQuadTreeScale(float value) {
+        quadTreePopperParent.gameObject.SetActive(value > float.Epsilon);
+        if(value < float.Epsilon) {
+            foreach(var quadTreePopper in quadtreePoppers) {
+                foreach(var quadTree in quadTreePopper.transform.GetComponentsInChildren<Renderer>()) {
+                    Destroy(quadTree.gameObject);
+                }
+            }
+        }
+        quadTreePopperParent.transform.localScale = Vector3.one * value;
+        var pos = quadTreePopperParent.transform.position;
+        quadTreePopperParent.transform.position = new Vector3(pos.x, 16 * value, pos.z);
+    }
+
+    Vector3 originalLiveCodeScale;
+    public void SetLiveCodeScale(float value) {
+        liveCode.transform.localScale = originalLiveCodeScale * value;
+    }
+
+
+    public void ToggleBoids() {
+        boids.gameObject.SetActive(!boids.gameObject.activeInHierarchy);
+    }
+
+    public void SetFloorSensitivity(float value) {
+        worldRaymarch.AudioReactiveSensitivity = value;
+    }
+
+    public void SetGridSize(float value) {
+        worldRaymarch.GridSize = value;
+    }
+
+    public void SetTextureCurl(float intensity) {
+        gpgpuParticle.CurlIntensity = intensity;
+    }
+
+    public void SetTextureForward(float intensity) {
+        gpgpuParticle.ForwardIntensity = intensity;
+    }
+
+    public void SetTextureExplode(float intensity) {
+        gpgpuParticle.ExplodeIntensity = intensity;
+    }
+
+
+    bool gpgpuDelegateActive;
+    float gpgpuTempo = 0;
+    AudioReactiveManager.Pitch gpgpuPitch = AudioReactiveManager.Pitch.High;
+    void cycler(float t) {
+        if (t > 0f) { return; }
+        gpgpuParticle.CyclePCache();
+    }
+    void CyclePCacheWithSavedTempo() {
+        gpgpuDelegateActive = true;
+        AudioReactiveManager.I.UnsubPitchAndTempo(gpgpuPitch, gpgpuTempo, cycler);
+        AudioReactiveManager.I.SubPitchAndTempo(gpgpuPitch, gpgpuTempo, cycler);
+    }
+
+    public void SetPCacheTempo(float value) {
+        AudioReactiveManager.I.UnsubPitchAndTempo(gpgpuPitch, gpgpuTempo, cycler);
+        AudioReactiveManager.I.UnsubPitchAndTempo(AudioReactiveManager.Pitch.Band, gpgpuTempo, gpgpuParticle.Curl);
+        gpgpuTempo = value;
+        if(value < 1f) {
+            AudioReactiveManager.I.SubPitchAndTempo(AudioReactiveManager.Pitch.Band, gpgpuTempo, gpgpuParticle.Curl);
+        }
+        if (gpgpuDelegateActive) {
+            AudioReactiveManager.I.SubPitchAndTempo(gpgpuPitch, gpgpuTempo, cycler);
+        }
+    }
+
+    public void SetPCache(float value) {
+        if(value == 1f) {
+            CyclePCacheWithSavedTempo();
+            return;
+        }
+        gpgpuDelegateActive = false;
+        AudioReactiveManager.I.UnsubPitchAndTempo(gpgpuPitch, gpgpuTempo, cycler);
+
+        gpgpuParticle.SetPCache(value);
+    }
+
+    public void SetPCacheScale(float value) {
+        gpgpuParticle.transform.localScale = Vector3.one * value;
+    }
+    
+    public void MoveForward(float value) {
+        float speed = -10f * value; 
+        worldRaymarch.Speed = speed;
+        spaceWarp.throttle = value;
+        spaceWarp.speed = speed*20f;
+        waveStick.Speed = -speed+5;
+        quadtreePoppers.ForEach(x => x.Speed = -speed + 30);
+        radialMesh.Speed = -speed+7;
+    }
+
+
+    // Runs OnEnable (runs in editor stuff and before Start)
+    void OnEnable() {
         if(I == null) {
             I = this;
         }
@@ -120,6 +255,7 @@ public class SceneController : MonoBehaviour {
         profile.TryGetSettings(out warp);
         profile.TryGetSettings(out chromaticAberration);
         profile.TryGetSettings(out recolor);
+        originalLiveCodeScale = liveCode.transform.localScale;
 
 
         Debug.Log("displays connected: " + Display.displays.Length);

@@ -33,7 +33,7 @@ namespace BoidsSimulationOnGPU {
         #endregion
 
         #region MonoBehaviour Functions
-        void Start() {
+        void OnEnable() {
             // 引数バッファを初期化
             argsBuffer = new ComputeBuffer(1, args.Length * sizeof(uint),
                 ComputeBufferType.IndirectArguments);
@@ -85,7 +85,7 @@ namespace BoidsSimulationOnGPU {
                 0,                      // submeshのインデックス
                 InstanceRenderMaterial, // 描画を行うマテリアル 
                 bounds,                 // 境界領域
-                argsBuffer              // GPUインスタンシングのための引数のバッファ 
+                argsBuffer              // GPUインスタンシングのための引数のバッファ
             );
         }
         #endregion

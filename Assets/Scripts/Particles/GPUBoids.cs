@@ -17,7 +17,7 @@ namespace BoidsSimulationOnGPU {
         #region Boids Parameters
         // 最大オブジェクト数
         [Range(256, 32768)]
-        private int maxObjectNum = 16384;
+        public int maxObjectNum = 16384;
 
         // 結合を適用する他の個体との半径
         public float CohesionNeighborhoodRadius = 2.0f;

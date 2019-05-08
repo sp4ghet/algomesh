@@ -15,7 +15,7 @@ public class TextureParticle : MonoBehaviour
     ComputeShader m_textureParticleShader;
 
     [SerializeField]
-    UnityEditor.VFX.Utils.PointCacheAsset m_pCache;
+    List<UnityEditor.VFX.Utils.PointCacheAsset> m_pCaches;
 
     [SerializeField]
     Vector2 m_aspectRatio;
@@ -30,27 +30,54 @@ public class TextureParticle : MonoBehaviour
     AnimationCurve m_spawnCurve;
 
     [SerializeField]
+    int m_maxSpawnCount;
+
+    [SerializeField]
     float m_Scale;
+
+    [SerializeField]
+    private float m_lifetime = 1.5f;
+
+    int currentIndex = 0;
+    UnityEditor.VFX.Utils.PointCacheAsset m_pCache;
+
+    float m_curlIntensity;
+    float m_forwardIntensity;
+    float m_explodeIntensity;
 
     ComputeBuffer m_posBuffer;
     ComputeBuffer m_colorBuffer;
+    ComputeBuffer m_aliveBuffer;
+    int[] aliveBufferArray = new int[] { 0 };
 
     uint[] args = new uint[5] { 0, 0, 0, 0, 0 };
     ComputeBuffer m_argsBuffer;
 
     bool m_useColor;
-    private float m_lifetime = 20f;
-    float m_bpm = 120;
 
     Texture2D m_defaultColorTex;
 
-    public float Bpm {
-        get => m_bpm;
-        set {
-            m_lifetime = 60f / (value/4);
-            m_bpm = value;
-            }
-        }
+    int Alive { get => aliveBufferArray[0]; set => aliveBufferArray[0] = value; }
+    public float CurlIntensity { get => m_curlIntensity; set => m_curlIntensity = value; }
+    public float ForwardIntensity { get => m_forwardIntensity; set => m_forwardIntensity = value; }
+    public float ExplodeIntensity { get => m_explodeIntensity; set => m_explodeIntensity = value; }
+    public float Lifetime { get => m_lifetime; set => m_lifetime = value; }
+
+    public void SetPCache(float t) {
+        currentIndex = Mathf.FloorToInt(t * m_pCaches.Count) % m_pCaches.Count;
+        m_pCache = m_pCaches[currentIndex];
+    }
+
+    public void CyclePCache() {
+        currentIndex = (currentIndex + 1) % m_pCaches.Count;
+        m_pCache = m_pCaches[currentIndex];
+    }
+
+    
+    public void Curl(float t) {
+        Debug.Log(t);
+        CurlIntensity = 1f-t;
+    }
 
     void InitBuffer() {
         m_particleCount = m_particleCount > m_pCache.PointCount ? m_pCache.PointCount : m_particleCount;
@@ -59,6 +86,7 @@ public class TextureParticle : MonoBehaviour
         m_colorBuffer = new ComputeBuffer(m_particleCount, Marshal.SizeOf(typeof(Vector4)));
         m_argsBuffer = new ComputeBuffer(1, args.Length * sizeof(uint),
                 ComputeBufferType.IndirectArguments);
+        m_aliveBuffer = new ComputeBuffer(1, Marshal.SizeOf(typeof(int)));
     }
 
     void ReleaseBuffer() {
@@ -68,11 +96,15 @@ public class TextureParticle : MonoBehaviour
         m_argsBuffer = null;
         m_colorBuffer?.Release();
         m_colorBuffer = null;
+        m_aliveBuffer?.Release();
+        m_aliveBuffer = null;
     }
 
     
     private void SpawnParticles(float lifeCycleTime) {
         int threadGroupSize = m_particleCount / BLOCK_SIZE;
+        int spawnCount = (int)(m_maxSpawnCount * m_spawnCurve.Evaluate(lifeCycleTime));
+        //int spawnCount = 500;
 
         var tex = m_pCache.surfaces[0];
         Texture2D tex2 = m_defaultColorTex;
@@ -87,17 +119,24 @@ public class TextureParticle : MonoBehaviour
 
         cs.SetBool("_UseColor", m_useColor);
         cs.SetTexture(kernelPos, "SpawnColor", tex2);
+        cs.SetFloat("_AspectRatio", m_aspectRatio.x / m_aspectRatio.y);
+
         cs.SetBuffer(kernelPos, "_ParticleColorBuffer", m_colorBuffer);
         cs.SetInt("_PCacheTexWidth", tex.width);
-        cs.SetFloat("_AspectRatio", m_aspectRatio.x / m_aspectRatio.y);
         cs.SetBuffer(kernelPos, "_ParticlePosBuffer", m_posBuffer);
 
+        cs.SetFloat("_LifeTime", m_lifetime);
         cs.SetInt("_ParticleCount", m_particleCount);
-        cs.SetFloat("_SpawnRate", m_spawnCurve.Evaluate(lifeCycleTime / m_lifetime));
-
-        cs.SetFloat("_Scale", transform.localScale.x);
+        cs.SetInt("_AliveCount", Alive);
+        cs.SetBuffer(kernelPos, "_AliveCounter", m_aliveBuffer);
+        cs.SetInt("_SpawnRate", spawnCount);
 
         cs.Dispatch(kernelPos, threadGroupSize, 1, 1);
+        // this needs to be after the simulation
+        m_aliveBuffer.GetData(aliveBufferArray);
+        Alive = Mathf.Min(m_particleCount, aliveBufferArray[0]);
+        Alive = Mathf.Max(0, Alive);
+        m_aliveBuffer.SetData(aliveBufferArray);
     }
 
     void Run(float lifeCycleTime) {
@@ -107,20 +146,25 @@ public class TextureParticle : MonoBehaviour
         int kernelPos = cs.FindKernel("ParticlePos");
         cs.SetBuffer(kernelPos, "_ParticlePosBuffer", m_posBuffer);
 
+        cs.SetBuffer(kernelPos, "_AliveCounter", m_aliveBuffer);
+        cs.SetInt("_AliveCount", Alive);
         cs.SetFloat("_Time", Time.time);
         cs.SetFloat("_DeltaTime", Time.deltaTime);
-        cs.SetFloat("_Lifetime", m_lifetime);
-        cs.SetVector("_Scale", transform.localScale);
+        cs.SetFloat("_LifeTime", m_lifetime);
+
+        cs.SetFloat("_CurlIntensity", m_curlIntensity);
+        cs.SetFloat("_ForwardIntensity", m_forwardIntensity);
+        cs.SetFloat("_ExploreIntensity", m_explodeIntensity);
+
         cs.Dispatch(kernelPos, threadGroupSize, 1, 1);
     }
 
     void Render() {
-        // 指定したメッシュのインデックス数を取得
         uint numIndices = (m_mesh != null) ?
             (uint)m_mesh.GetIndexCount(0) : 0;
-        args[0] = numIndices; // メッシュのインデックス数をセット
-        args[1] = (uint)m_particleCount; // インスタンス数をセット
-        m_argsBuffer.SetData(args); // バッファにセット
+        args[0] = numIndices;
+        args[1] = (uint)Alive+1;
+        m_argsBuffer.SetData(args);
 
         m_mat.SetBuffer("_ParticlePosBuffer", m_posBuffer);
         m_mat.SetBuffer("_ParticleColorBuffer", m_colorBuffer);
@@ -137,9 +181,15 @@ public class TextureParticle : MonoBehaviour
             );
     }
 
+    void Loop(float t) {
+        SpawnParticles(t);
+        Run(t);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        m_pCache = m_pCaches[0];
         m_defaultColorTex = new Texture2D(1, 1);
         InitBuffer();
         SpawnParticles(0);
@@ -148,9 +198,8 @@ public class TextureParticle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float lifecycleTime = Time.time % m_lifetime;
-        SpawnParticles(lifecycleTime);
-        Run(lifecycleTime);
+        float lifecycleTime = (Time.time % m_lifetime) / m_lifetime;
+        Loop(lifecycleTime);
         Render();
     }
 

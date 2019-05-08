@@ -21,7 +21,7 @@ public class RadialMesh : MonoBehaviour {
 	[SerializeField]
 	float speed = 1;
 	[SerializeField]
-	float lifeTime = 10;
+	float m_duration = 10;
 	[SerializeField]
 	float popDuration = 2;
 	[SerializeField]
@@ -30,8 +30,6 @@ public class RadialMesh : MonoBehaviour {
     int subdivisions = 100;
     [SerializeField]
 	MeshFilter filter;
-
-    float initialSpeed;
 
     Material glow;
     int emissionId;
@@ -62,6 +60,8 @@ public class RadialMesh : MonoBehaviour {
     }
 
     public Color EmissionColor { get => emissionColor; set => emissionColor = value; }
+    public RadialState RadialMeshMode { get => radialMeshMode; set => radialMeshMode = value; }
+    public float Speed { get => speed; set => speed = value; }
 
     IEnumerator Pop(float duration) {
 		for (float t = 0; t < duration; t += Time.deltaTime) {
@@ -69,7 +69,7 @@ public class RadialMesh : MonoBehaviour {
 			float side = easingFunction(0, 0.5f, t / duration);
 
 			for (int i = 0; i < subdivisions; i++) {
-				Quaternion rot = Quaternion.Euler(0, 0, (i/(float)subdivisions) * 360 );
+				Quaternion rot = Quaternion.Euler(0, transform.rotation.eulerAngles.y, (i/(float)subdivisions) * 360 );
 				vertices[i*e] = rot * new Vector3(0, radius - side, 0);
 				vertices[i*e + 1] = rot * new Vector3(0, radius - side, side*2);
 				vertices[i*e + 2] = rot * new Vector3(0, radius + side, 0);
@@ -114,22 +114,22 @@ public class RadialMesh : MonoBehaviour {
 			mesh.RecalculateBounds();
 			yield return new WaitForEndOfFrame();
 		}
+        if(radialMeshMode != RadialState.simple) {
+            StartCoroutine(Twist(1f));
+        }
     }
 
     IEnumerator Twist(float duration) {
-        for(float t = 0; t <= duration+float.Epsilon; t+= Time.deltaTime) {
+        float radius = maxRadius;
+        float side = 0.5f;
+        for (float t = 0; t < duration; t += Time.deltaTime) {
             float cT = Mathf.Sin(t*PI / duration); //circular time
             float nT = t / duration; //normalized time
 
-            speed = easingFunction(initialSpeed/5f,initialSpeed,nT);
-
-            float radius = maxRadius;
-            float side = 0.5f;
-
-            glow.SetColor(emissionId, Color.Lerp(Color.white * 0.1f, emissionColor, cT));
+            glow.SetColor(emissionId, Color.Lerp(Color.white * 0.1f, emissionColor, nT));
 
             for (int i = 0; i < subdivisions; i++) {
-                Quaternion rot = Quaternion.Euler(0, 0, (i / (float)subdivisions) * 360);
+                Quaternion rot = Quaternion.Euler(0, transform.rotation.eulerAngles.y, (i / (float)subdivisions) * 360);
                 vertices[i * e] = rot * new Vector3(0, radius - side, 0);
                 vertices[i * e + 1] = rot * new Vector3(0, radius - side, side * 2);
                 vertices[i * e + 2] = rot * new Vector3(0, radius + side, 0);
@@ -149,6 +149,17 @@ public class RadialMesh : MonoBehaviour {
 
             yield return new WaitForEndOfFrame();
         }
+
+        for (int i = 0; i < subdivisions; i++) {
+            Quaternion rot = Quaternion.Euler(0, transform.rotation.eulerAngles.y, (i / (float)subdivisions) * 360);
+            vertices[i * e] = rot * new Vector3(0, radius - side, 0);
+            vertices[i * e + 1] = rot * new Vector3(0, radius - side, side * 2);
+            vertices[i * e + 2] = rot * new Vector3(0, radius + side, 0);
+            vertices[i * e + 3] = rot * new Vector3(0, radius + side, side * 2);
+        }
+        mesh.vertices = vertices;
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
     }
 
 
@@ -163,7 +174,7 @@ public class RadialMesh : MonoBehaviour {
 
         switch(radialMeshMode) {
         case RadialState.random:
-            transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+            transform.localRotation *= Quaternion.Euler(0, 0, Random.Range(0, 360));
             break;
         case RadialState.simple:
             break;
@@ -175,23 +186,22 @@ public class RadialMesh : MonoBehaviour {
             break;
         }
 
-        initialSpeed = speed;
-
 		startTime = Time.time;
 
         glow = GetComponent<MeshRenderer>().material;
         emissionId = Shader.PropertyToID("_EmissionColor");
-        emissionColor = Color.cyan;
+        emissionColor = glow.GetColor(emissionId);
         glow.SetColor(emissionId, Color.white * 0.1f);
 
-		easingFunction = Easing.GetEasingFunction(easing);
+        easingFunction = Easing.GetEasingFunction(easing);
 		StartCoroutine(Pop(popDuration));
 	}
 
 	// Update is called once per frame
 	void Update () {
-        float duration = Time.time - startTime;
-        if (Time.time - startTime >= lifeTime
+        float lifeTime = Time.time - startTime;
+        float duration = m_duration / transform.parent.localScale.x;
+        if (Time.time - startTime >= duration
             || radialMeshMode == RadialState.off) {
             Destroy(gameObject);
         }
@@ -203,12 +213,12 @@ public class RadialMesh : MonoBehaviour {
         if (bendTunnel) {
             const float angle = Mathf.PI / 2f;
             const float phase = Mathf.PI / 2.4f;
-            float y = Mathf.Sin(angle * duration / (lifeTime) + phase) * 50f - 50f;
-            float z = Mathf.Cos(angle * duration / (lifeTime) + phase) * 50f - 10f;
+            float y = Mathf.Sin(angle * lifeTime / (duration) + phase) * 50f - 50f;
+            float z = Mathf.Cos(angle * lifeTime / (duration) + phase) * 50f - 10f;
             transform.position = new Vector3(0, y, z);
         }
         else {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
+            transform.localPosition = (transform.localRotation * Vector3.forward) * speed * lifeTime;
 
         }
     }

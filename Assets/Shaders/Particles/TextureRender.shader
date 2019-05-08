@@ -70,7 +70,7 @@
             pos.w = 1;
             float4x4 object2world = (float4x4)0;
 
-            _ObjectToWorld._14_24_34 += mul(_ObjectToWorld, pos);
+            _ObjectToWorld._14_24_34 = mul(_ObjectToWorld, pos);
             unity_ObjectToWorld =  _ObjectToWorld;
             object2world = (float4x4)0;
             object2world._11_22_33 = _ObjectScale;

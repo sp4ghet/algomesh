@@ -16,6 +16,9 @@ public class QuadTreeInstancing : MonoBehaviour {
     QuadTree<XYPos> tree;
 
     int currentTreeDepth = 0;
+    private float speed;
+
+    public float Speed { get => speed; set => speed = value; }
 
     public class XYPos : IQuadTreeObject {
         private Vector3 m_vPosition;
@@ -44,9 +47,9 @@ public class QuadTreeInstancing : MonoBehaviour {
     IEnumerator slideAndKill(GameObject obj, Vector3 velocity, float lifetime) {
         float life = 0;
         while(life < lifetime) {
+            var v = Vector3.Scale(velocity, transform.parent.localScale);
             life += Time.deltaTime;
-            obj.transform.position += velocity * Time.deltaTime;
-            //obj.transform.localScale = Vector3.one * obj.transform.position.magnitude*2/m_size;
+            obj.transform.position = transform.position + (v * life);
             yield return new WaitForEndOfFrame();
         }
         Destroy(obj);
@@ -76,7 +79,7 @@ public class QuadTreeInstancing : MonoBehaviour {
         for (int i = 0; i < infos.Count; i++) {
                 var (pos, size) = infos[i];
                 int shapeIndex = i % meshes.Count;
-                var rotPos = transform.rotation * pos + transform.position;
+                var rotPos = pos;
                 var trsMatrix = Matrix4x4.TRS(rotPos, Quaternion.Euler(UnityEngine.Random.Range(-1, 2) * 45,
                                                                        UnityEngine.Random.Range(-1, 2) * 45,
                                                                        0), size);
@@ -84,10 +87,10 @@ public class QuadTreeInstancing : MonoBehaviour {
                 combineInstance[i].transform = trsMatrix;
         }
         mesh.CombineMeshes(combineInstance, true, true);
-        GameObject newObject = Instantiate(quadtree);
+        GameObject newObject = Instantiate(quadtree, transform);
         newObject.GetComponent<MeshFilter>().mesh = mesh;
-        var velocity = Vector3.forward * 30f;
+        var velocity = Vector3.forward * speed;
         velocity = transform.rotation * velocity;
-        StartCoroutine(slideAndKill(newObject, velocity, 10));
+        StartCoroutine(slideAndKill(newObject, velocity, speed/3f));
     }
 }

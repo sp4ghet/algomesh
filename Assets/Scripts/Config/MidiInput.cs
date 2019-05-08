@@ -25,18 +25,46 @@ public class MidiInput : MonoBehaviour {
 
 
     enum MidiNotes : int {
-        bpmTap = 42
-        ,recolorTap = 73
+        bpmTap = 41
+        , cameraChangeMotif = 42
+        , cameraChangePosition = 43
+        , textureCurl = 57
+        , textureForward = 58
+        , textureExplode = 59
+        
+        , recolorTap = 73
+        , quadTreeMode = 74
+        , toggleBoids = 75
     }
 
     enum MidiKnobs : int {
-        warpSlider = 77
-        ,glitchSlider = 78
-        ,inversionKnob = 49
-        ,recolorSlider = 79
-        ,lowThreshKnob = 13
-        ,bandThreshKnob = 14
-        ,highThreshKnob = 15
+         lowThreshKnob = 13
+        , bandThreshKnob = 14
+        , highThreshKnob = 15
+        , fftAmp = 16
+        , boidsAudioSensitivity = 17
+        , pCacheSelection = 20
+
+        , cameraPosTempo = 29
+        , radialMeshTempo = 31
+        , quadTreeTempo = 34
+        , objectSpaceTempo = 35
+        , pCacheTempo = 36
+
+        , inversionKnob = 49
+        , liveCodeScale = 50
+        , floorSDF = 52
+        , spatialGridSDF = 53
+        , objectSDF = 55
+        , pCacheParticles = 56
+
+        , warpSlider = 77
+        , glitchSlider = 78
+        , recolorSlider = 79
+        , waveStickScale = 81
+        , radialMeshScale = 80
+        , quadTreeScale = 82
+        , moveForward = 83
     }
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
@@ -48,12 +76,39 @@ public class MidiInput : MonoBehaviour {
         case MidiNotes.recolorTap:
             sceneController.NewRecolor();
             break;
+        case MidiNotes.cameraChangeMotif:
+            sceneController.NextCameraMotif();
+            break;
+        case MidiNotes.cameraChangePosition:
+            sceneController.NextCameraPosition();
+            break;
+        case MidiNotes.toggleBoids:
+            sceneController.ToggleBoids();
+            break;
+        case MidiNotes.textureCurl:
+            sceneController.SetTextureCurl(1);
+            break;
+        case MidiNotes.textureForward:
+            sceneController.SetTextureForward(1);
+            break;
+        case MidiNotes.textureExplode:
+            sceneController.SetTextureExplode(1);
+            break;
         }
     }
 
     void NoteOff(MidiChannel channel, int note) {
         MidiNotes _note = (MidiNotes)note;
         switch (_note) {
+        case MidiNotes.textureCurl:
+            sceneController.SetTextureCurl(0);
+            break;
+        case MidiNotes.textureForward:
+            sceneController.SetTextureForward(0);
+            break;
+        case MidiNotes.textureExplode:
+            sceneController.SetTextureExplode(0);
+            break;
         }
     }
 
@@ -80,6 +135,49 @@ public class MidiInput : MonoBehaviour {
             break;
         case MidiKnobs.highThreshKnob:
             sceneController.SetHighThresh(knobValue);
+            break;
+        case MidiKnobs.waveStickScale:
+            sceneController.SetWaveStickScale(knobValue);
+            break;
+        case MidiKnobs.radialMeshScale:
+            sceneController.SetRadialMeshScale(knobValue);
+            break;
+        case MidiKnobs.floorSDF:
+            sceneController.SetFloorSensitivity(knobValue);
+            break;
+        case MidiKnobs.spatialGridSDF:
+            sceneController.SetGridSize(knobValue);
+            break;
+        case MidiKnobs.objectSDF:
+            sceneController.SetObjectSpaceScale(knobValue);
+            break;
+        case MidiKnobs.quadTreeScale:
+            sceneController.SetQuadTreeScale(knobValue);
+            break;
+        case MidiKnobs.liveCodeScale:
+            sceneController.SetLiveCodeScale(knobValue);
+            break;
+        case MidiKnobs.pCacheParticles:
+            sceneController.SetPCacheScale(knobValue);
+            break;
+        case MidiKnobs.pCacheSelection:
+            sceneController.SetPCache(knobValue);
+            break;
+        case MidiKnobs.pCacheTempo:
+            sceneController.SetPCacheTempo(knobValue);
+            break;
+        case MidiKnobs.moveForward:
+            sceneController.MoveForward(knobValue);
+            break;
+        case MidiKnobs.objectSpaceTempo:
+            break;
+        case MidiKnobs.quadTreeTempo:
+            break;
+        case MidiKnobs.radialMeshTempo:
+            break;
+        case MidiKnobs.fftAmp:
+            break;
+        case MidiKnobs.cameraPosTempo:
             break;
         }
     }
