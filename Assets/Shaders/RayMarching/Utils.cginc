@@ -1,5 +1,5 @@
-﻿#ifndef utils_h 
-#define utils_h 
+﻿#ifndef utils_h
+#define utils_h
 
 float3 mod(float3 a, float3 b)
 {
@@ -78,13 +78,13 @@ float add( float d1, float d2 )
     return min(d1,d2);
 }
 
-	
+
 float subtraction( float d1, float d2 )
 {
     return max(-d1,d2);
 }
 
-	
+
 float intersection( float d1, float d2 )
 {
     return max(d1,d2);

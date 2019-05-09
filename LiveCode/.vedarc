@@ -1,7 +1,8 @@
 {
   "audio": true, // Enable audio input
   "camera": true, // Enable WebCam input
-
+  "glslify": true,
+  "pixelRatio": 1.0,
   IMPORTED: {
     image: {
       "PATH": "./images/1.jpg",
