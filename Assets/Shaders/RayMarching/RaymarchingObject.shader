@@ -52,7 +52,7 @@ GBufferOut frag(VertObjectOutput i)
     float3 rayDir = GetRayDirection(i.screenPos);
     float3 pos = i.worldPos;
     float distance = 0;
-    Raymarch(pos, distance, rayDir, 0.001, 30);
+    Raymarch(pos, distance, rayDir, 0.0001, 50);
 
     float depth = GetDepth(pos);
     float3 normal = i.worldNormal * 0.5 + 0.5;
@@ -61,9 +61,9 @@ GBufferOut frag(VertObjectOutput i)
     }
 
     GBufferOut o;
-    o.diffuse = float4(0, 0, 0, .05);
-    o.specular = float4(.15, .15, .15, 1);
-    o.emission = 0.1f;
+    o.diffuse = float4(0, 0, 0, 1);
+    o.specular = float4(.5, .5, .5, 1);
+    o.emission = float4(0.05, 0.99, 0.99, 0)*1.8;
     o.normal = float4(normal, 1.0);
     o.depth = depth;
 

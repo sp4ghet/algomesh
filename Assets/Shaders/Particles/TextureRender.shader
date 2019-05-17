@@ -86,12 +86,14 @@
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             fixed4 c;
-            
+
             c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             #ifdef UNITY_PROCEDURAL_INSTANCING_ENABLED
             float4 pointColor = _ParticleColorBuffer[unity_InstanceID];
             if(_UseColor){
                 c *= pointColor;            
+            }else if(unity_InstanceID % 8 == 0){
+                c = float4(0.2, .8, 1, 1);
             }
             #endif
             o.Albedo = c.rgb;

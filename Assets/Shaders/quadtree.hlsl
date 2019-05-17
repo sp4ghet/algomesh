@@ -73,7 +73,7 @@ GBufferOut frag(GeometryOutput input)
     float3 delta = fwidth(bary);
     bary = step(delta*.5, bary);
     float wire = min(bary.x, min(bary.y, bary.z));
-    float4 color = _Color * (wire);
+    float4 color = lerp(_Color, (float4)1 - _Color, wire);
 
     o.diffuse = color;
     o.specular = float4(0,0,0,0);

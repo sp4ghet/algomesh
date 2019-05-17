@@ -33,7 +33,6 @@ public class MidiInput : MonoBehaviour {
         , textureExplode = 59
         
         , recolorTap = 73
-        , quadTreeMode = 74
         , toggleBoids = 75
     }
 
@@ -41,22 +40,19 @@ public class MidiInput : MonoBehaviour {
          lowThreshKnob = 13
         , bandThreshKnob = 14
         , highThreshKnob = 15
-        , fftAmp = 16
         , boidsAudioSensitivity = 17
         , pCacheSelection = 20
 
         , cameraPosTempo = 29
-        , radialMeshTempo = 31
-        , quadTreeTempo = 34
         , objectSpaceTempo = 35
         , pCacheTempo = 36
 
         , inversionKnob = 49
         , liveCodeScale = 50
-        , floorSDF = 52
-        , spatialGridSDF = 53
-        , objectSDF = 55
-        , pCacheParticles = 56
+        , floorSDFSensitivity = 52
+        , spatialGridSDFScale = 53
+        , objectSDFScale = 55
+        , pCacheParticlesScale = 56
 
         , warpSlider = 77
         , glitchSlider = 78
@@ -65,6 +61,7 @@ public class MidiInput : MonoBehaviour {
         , radialMeshScale = 80
         , quadTreeScale = 82
         , moveForward = 83
+        , objectSDFLerp = 84
     }
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
@@ -142,13 +139,13 @@ public class MidiInput : MonoBehaviour {
         case MidiKnobs.radialMeshScale:
             sceneController.SetRadialMeshScale(knobValue);
             break;
-        case MidiKnobs.floorSDF:
+        case MidiKnobs.floorSDFSensitivity:
             sceneController.SetFloorSensitivity(knobValue);
             break;
-        case MidiKnobs.spatialGridSDF:
+        case MidiKnobs.spatialGridSDFScale:
             sceneController.SetGridSize(knobValue);
             break;
-        case MidiKnobs.objectSDF:
+        case MidiKnobs.objectSDFScale:
             sceneController.SetObjectSpaceScale(knobValue);
             break;
         case MidiKnobs.quadTreeScale:
@@ -157,7 +154,7 @@ public class MidiInput : MonoBehaviour {
         case MidiKnobs.liveCodeScale:
             sceneController.SetLiveCodeScale(knobValue);
             break;
-        case MidiKnobs.pCacheParticles:
+        case MidiKnobs.pCacheParticlesScale:
             sceneController.SetPCacheScale(knobValue);
             break;
         case MidiKnobs.pCacheSelection:
@@ -171,13 +168,10 @@ public class MidiInput : MonoBehaviour {
             break;
         case MidiKnobs.objectSpaceTempo:
             break;
-        case MidiKnobs.quadTreeTempo:
-            break;
-        case MidiKnobs.radialMeshTempo:
-            break;
-        case MidiKnobs.fftAmp:
-            break;
         case MidiKnobs.cameraPosTempo:
+            break;
+        case MidiKnobs.objectSDFLerp:
+            sceneController.SetObjectSpaceLerp(knobValue);
             break;
         }
     }

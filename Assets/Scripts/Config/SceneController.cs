@@ -112,16 +112,16 @@ public class SceneController : MonoBehaviour {
     }
 
     public void SetLowThresh(float value) {
-        AudioReactiveManager.I.LowThresh = Mathf.Lerp(40, 80, value);
-        radialMesh.MeshThreshold = Mathf.Lerp(40, 80, value);
+        AudioReactiveManager.I.LowThresh = Mathf.Lerp(40, 85, value);
+        radialMesh.MeshThreshold = Mathf.Lerp(40, 85, value);
     }
 
     public void SetBandThresh(float value) {
-        AudioReactiveManager.I.BandThresh = Mathf.Lerp(35, 70, value);
+        AudioReactiveManager.I.BandThresh = Mathf.Lerp(35, 80, value);
     }
 
     public void SetHighThresh(float value) {
-        AudioReactiveManager.I.HighThresh = Mathf.Lerp(30, 60, value);
+        AudioReactiveManager.I.HighThresh = Mathf.Lerp(30, 70, value);
     }
 
 
@@ -140,16 +140,7 @@ public class SceneController : MonoBehaviour {
         raymarchObject.transform.localScale = Vector3.one * 3f * value;
     }
 
-
     public void SetQuadTreeScale(float value) {
-        quadTreePopperParent.gameObject.SetActive(value > float.Epsilon);
-        if(value < float.Epsilon) {
-            foreach(var quadTreePopper in quadtreePoppers) {
-                foreach(var quadTree in quadTreePopper.transform.GetComponentsInChildren<Renderer>()) {
-                    Destroy(quadTree.gameObject);
-                }
-            }
-        }
         quadTreePopperParent.transform.localScale = Vector3.one * value;
         var pos = quadTreePopperParent.transform.position;
         quadTreePopperParent.transform.position = new Vector3(pos.x, 16 * value, pos.z);
@@ -193,6 +184,11 @@ public class SceneController : MonoBehaviour {
         if (t > 0f) { return; }
         gpgpuParticle.CyclePCache();
     }
+
+    public void SetObjectSpaceLerp(float value) {
+        raymarchObject.Lerp = value;
+    }
+
     void CyclePCacheWithSavedTempo() {
         gpgpuDelegateActive = true;
         AudioReactiveManager.I.UnsubPitchAndTempo(gpgpuPitch, gpgpuTempo, cycler);
@@ -267,6 +263,9 @@ public class SceneController : MonoBehaviour {
             Display.displays[2].Activate();
         }
         setBpm(120);
+
+        quadtreePoppers.ForEach(x => { AudioReactiveManager.I.SubLowTempoFromValue(2.9f/7f, x.NewInstance); });
+
     }
 
     private void Update() {

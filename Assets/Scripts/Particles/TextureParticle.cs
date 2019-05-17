@@ -15,7 +15,7 @@ public class TextureParticle : MonoBehaviour
     ComputeShader m_textureParticleShader;
 
     [SerializeField]
-    List<UnityEditor.VFX.Utils.PointCacheAsset> m_pCaches;
+    List<Copy.VFX.Utils.PointCacheAsset> m_pCaches;
 
     [SerializeField]
     Vector2 m_aspectRatio;
@@ -39,7 +39,7 @@ public class TextureParticle : MonoBehaviour
     private float m_lifetime = 1.5f;
 
     int currentIndex = 0;
-    UnityEditor.VFX.Utils.PointCacheAsset m_pCache;
+    Copy.VFX.Utils.PointCacheAsset m_pCache;
 
     float m_curlIntensity;
     float m_forwardIntensity;
@@ -75,7 +75,6 @@ public class TextureParticle : MonoBehaviour
 
     
     public void Curl(float t) {
-        Debug.Log(t);
         CurlIntensity = 1f-t;
     }
 

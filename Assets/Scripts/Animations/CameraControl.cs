@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEditor;
 using Klak.Math;
 
 public class CameraControl : MonoBehaviour
@@ -16,10 +17,12 @@ public class CameraControl : MonoBehaviour
     public class CameraPosition{
         public bool lookAtFocus;
         public bool shouldFollow;
+        public bool randomPos;
+        public float randomRadius;
         public List<Vector3> positions;
         public Transform focus;
     }
-
+    
     #region Editable Fields
     [SerializeField]
     bool m_enablePos;
@@ -74,10 +77,21 @@ public class CameraControl : MonoBehaviour
         }
         if (idx > m_motifs.Count) { idx = idx % m_motifs.Count; }
         m_currentMotif = m_motifs[idx];
+        CyclePositions();
     }
 
     public void CyclePositions() {
         //assumes m_currentMotif is set
+        if (m_currentMotif.randomPos) {
+            var randomRotation = Quaternion.Euler(
+                UnityEngine.Random.Range(-90f, 90f),
+                UnityEngine.Random.Range(-90f, 90f),
+                UnityEngine.Random.Range(-90f, 90f));
+            var target = randomRotation * TargetPos.normalized * UnityEngine.Random.Range(1f, m_currentMotif.randomRadius);
+            target = new Vector3(target.x, Mathf.Max(target.y, -1f), target.z);
+            TargetPos = target;
+            return;
+        }
         int idx = m_currentMotif.positions.FindIndex(x => x == TargetPos);
         TargetPos = m_currentMotif.positions[(idx + 1) % m_currentMotif.positions.Count];
     }
@@ -141,9 +155,6 @@ public class CameraControl : MonoBehaviour
 
         if (m_enablePos) {
             transform.position = Vector3.SmoothDamp(transform.position, target, ref m_posVelocity, m_posSmoothTime);
-        }
-        else {
-            m_currentMotif = m_origin;
         }
 
         if (m_currentMotif.lookAtFocus) {

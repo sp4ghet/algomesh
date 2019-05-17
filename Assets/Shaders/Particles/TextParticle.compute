@@ -77,10 +77,10 @@ void ParticlePos (uint3 id : SV_DispatchThreadID)
     float4 pos = _ParticlePosBuffer[ParticleID];
     if(ParticleID > aliveCount){return;}
 
-    float intensity = _CurlIntensity;
+    float intensity = exp(-5*(1-_CurlIntensity));
     intensity = saturate(intensity) * 2. + 0.05;
 
-    float currentIterOffset = fmod(_Time, 10000) - fmod(_Time, 5);
+    float currentIterOffset = fmod(_Time, 100) - fmod(_Time, 5);
     float3 velocity = curlC(pos.xyz + currentIterOffset) * intensity;
     velocity += _ForwardIntensity * float3(0,0, pos.z)*step(pos.z,0)*3/_LifeTime;
     velocity += _ExplodeIntensity * normalize(pos.xyz)*5;

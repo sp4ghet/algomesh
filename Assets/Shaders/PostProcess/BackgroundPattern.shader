@@ -1,8 +1,8 @@
-﻿Shader "Hidden/Streak"
+﻿Shader "Hidden/BackgroundPattern"
 {
     Properties
     {
-        _Speed ("Speed", Float) = 0
+        _Blend ("Blend", Float) = 0
     }
     SubShader
     {
@@ -12,7 +12,7 @@
         Pass
         {
             HLSLINCLUDE
-            #include "streak.hlsl"
+            #include "backgroundpattern.hlsl"
             ENDHLSL
 
             HLSLPROGRAM

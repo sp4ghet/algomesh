@@ -10,6 +10,8 @@ public class RaymarchingObject : MonoBehaviour
     private float lerp;
     private int hitId_;
 
+    public float Lerp { get => lerp; set => lerp = value; }
+
     void Awake()
     {
         material_ = new Material(Shader.Find(shaderName));
@@ -20,7 +22,6 @@ public class RaymarchingObject : MonoBehaviour
     
     void Update()
     {
-        lerp = Random.Range(0, 1);
         material_.SetVector(scaleId_, transform.localScale);
         material_.SetFloat(hitId_, lerp);
     }

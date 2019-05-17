@@ -500,6 +500,10 @@ public class AudioReactiveManager : MonoBehaviour
 
         float safety = Time.deltaTime * 4;
 
+        //Debug.LogFormat("Low: {0}", AudioReactive.I.RmsLow);
+        //Debug.LogFormat("Band: {0}", AudioReactive.I.RmsBand);
+        //Debug.LogFormat("High: {0}", AudioReactive.I.RmsHigh);
+
         // low pass
         if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat*8) < Time.deltaTime && timing - lowTwoMeasureTiming > safety) {
             lowTwoMeasureTiming = timing;

@@ -31,6 +31,18 @@ public class QuadTreeInstancing : MonoBehaviour {
         }
     }
 
+    public void NewInstance(float t) {
+        if(t > 0) { return; }
+        tree = InitQuadTrees();
+        List<(Vector3, Vector3)> infos = new List<(Vector3, Vector3)>();
+
+        currentTreeDepth = (currentTreeDepth + 1) % 10;
+        tree.CreateObjects(ref infos, currentTreeDepth);
+
+        CreateMesh(infos);
+    }
+
+
     private QuadTree<XYPos> InitQuadTrees() {
         var quadTree = new QuadTree<XYPos>(1, new Rect(-m_size/2, -m_size/2, m_size, m_size));
         for (int j = 0; j < 20; j++) {
@@ -38,10 +50,6 @@ public class QuadTreeInstancing : MonoBehaviour {
             quadTree.Insert(newObject);
         }
         return quadTree;
-    }
-
-    private void Start() {
-        // InitMeshes();
     }
 
     IEnumerator slideAndKill(GameObject obj, Vector3 velocity, float lifetime) {
@@ -57,18 +65,6 @@ public class QuadTreeInstancing : MonoBehaviour {
 
     private void OnDrawGizmos() {
         //tree.DrawDebug();
-    }
-
-    private void Update() {
-        if(Time.frameCount % 20 == 0) {
-            tree = InitQuadTrees();
-            List<(Vector3, Vector3)> infos = new List<(Vector3, Vector3)>();
-            
-            currentTreeDepth = (currentTreeDepth+1) % 10;
-            tree.CreateObjects(ref infos, currentTreeDepth);
-            
-            CreateMesh(infos);
-        }
     }
 
     private void CreateMesh(List<(Vector3, Vector3)> infos)

@@ -29,9 +29,12 @@ float spatialGrid(float3 pos){
     float d;
 
     float gridSize = 1;
-    pos.z += _SpeedProgress;
-    pos.x += sin(pos.z)*.25;
-    pos.y += cos(pos.z)*.25;
+    pos.z += _SpeedProgress % (gridSize*100);
+    
+    float3 idx = pos / gridSize - pos % gridSize;
+    pos.z += sin(idx.x + idx.y)*.25;
+    pos.x += cos(idx.z + idx.y)*.25;
+    pos.y += sin(idx.z + idx.x)*.25;
 
     pos = repeat(pos, gridSize);
     

@@ -1,9 +1,5 @@
 ﻿Shader "Hidden/Glitch"
 {
-    HLSLINCLUDE
-    #include "glitch.hlsl"
-    ENDHLSL
-
     SubShader
     {
         Cull Off ZWrite Off ZTest Always
@@ -14,7 +10,7 @@
 
                 #pragma vertex VertDefault
                 #pragma fragment Frag
-
+                #include "glitch.hlsl"
             ENDHLSL
         }
     }

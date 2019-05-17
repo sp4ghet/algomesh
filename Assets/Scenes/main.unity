@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.076
   m_LinearFogStart: 0
   m_LinearFogEnd: 10
-  m_AmbientSkyColor: {r: 0.043075833, g: 0.7230616, b: 0.8301887, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 2
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0
@@ -32,11 +32,11 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 512
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 0}
+  m_CustomReflection: {fileID: 8900000, guid: b995d4bd9d11078d11005b9844295342, type: 3}
   m_Sun: {fileID: 1326154137}
   m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157274144}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c58a1144b5b8e494f977d1940a0a7274, type: 3}
   m_Name: 
@@ -562,12 +562,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _template: {fileID: 11400000, guid: 0900a5d741c5c9841a612681db77c73b, type: 2}
-  _throttle: 0.776
+  _throttle: 0
   _extent: {x: 100, y: 100, z: 100}
   _lineRadius: 0.1
   _lineWidth: 10
   _lineWidthRandomness: 0.5
-  _speed: 1
+  _speed: 0
   _speedRandomness: 0.642
   _randomSeed: 0
   _defaultMaterial: {fileID: 2100000, guid: a172ea80982dad64a9f7ab0ce7670de0, type: 2}
@@ -581,7 +581,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -622,28 +622,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &731486708
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Raymarching/Object
-  m_Shader: {fileID: 4800000, guid: c810734e89acb88428f27972b1196fc8, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _Hit: 0
-    m_Colors: []
 --- !u!1 &754371869
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +855,7 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - assemblyQualifiedName: Kino.PostProcessing.Streak, jp.keijiro.kino.post-processing.Runtime,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - assemblyQualifiedName: Streak, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+  - assemblyQualifiedName: BackgroundPattern, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   m_AfterStackBundles:
   - assemblyQualifiedName: Kino.PostProcessing.Recolor, jp.keijiro.kino.post-processing.Runtime,
@@ -920,7 +898,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 45
   orthographic: 0
@@ -969,37 +947,22 @@ MonoBehaviour:
   m_enablePos: 1
   m_motifs:
   - lookAtFocus: 1
-    shouldFollow: 0
-    positions:
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
+    shouldFollow: 1
+    randomPos: 1
+    randomRadius: 8
+    positions: []
     focus: {fileID: 2134814717}
   - lookAtFocus: 1
     shouldFollow: 1
-    positions:
-    - {x: 0, y: 0, z: 3}
-    - {x: -3, y: 0, z: 0}
-    - {x: 0, y: 0, z: -3}
+    randomPos: 1
+    randomRadius: 4
+    positions: []
     focus: {fileID: 1522987008}
   - lookAtFocus: 1
-    shouldFollow: 0
-    positions:
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
+    shouldFollow: 1
+    randomPos: 1
+    randomRadius: 8
+    positions: []
     focus: {fileID: 508354779}
   m_posSmoothTime: 0.47
   m_enableBrownian: 1
@@ -1125,7 +1088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1293728942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,7 +1555,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1619,6 +1582,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!21 &1697153653
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Raymarching/Object
+  m_Shader: {fileID: 4800000, guid: c810734e89acb88428f27972b1196fc8, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _Hit: 0
+    m_Colors: []
 --- !u!1 &1776002099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,7 +2182,7 @@ PrefabInstance:
     - target: {fileID: 8714293142902116011, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
       propertyPath: m_pCaches.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8714293142902116011, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
@@ -2334,19 +2319,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_pCaches.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 26aa094d860d8ad48b40f73c02d2872b,
+      objectReference: {fileID: 11400000, guid: 9d4901389bdf5914da7869aea3513f9c,
         type: 3}
     - target: {fileID: 8714293142902116011, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
       propertyPath: m_pCaches.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: efa68079f8656a646b7616ec66e247dd,
+      objectReference: {fileID: 11400000, guid: 49f89c46b29003347b1af03b6ee880d3,
         type: 3}
     - target: {fileID: 8714293142902116011, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
       propertyPath: m_pCaches.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 5bbb816b9b8d738498b498413fcaf112,
+      objectReference: {fileID: 11400000, guid: 586e67a4c18295e45a37a492359f2d5d,
         type: 3}
     - target: {fileID: 8714293142902116011, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
@@ -2354,6 +2339,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e186d154b3a0ef641bd705277bb71aa3,
         type: 3}
+    - target: {fileID: 8714293142902116011, guid: c16be296623c2094ea97616527919fbd,
+        type: 3}
+      propertyPath: m_particleCount
+      value: 19695
+      objectReference: {fileID: 0}
     - target: {fileID: 4572659150984825646, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
       propertyPath: m_Mesh
@@ -2362,6 +2352,11 @@ PrefabInstance:
     - target: {fileID: 4572659150984825647, guid: c16be296623c2094ea97616527919fbd,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572659150984825647, guid: c16be296623c2094ea97616527919fbd,
+        type: 3}
+      propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
