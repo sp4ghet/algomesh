@@ -6,13 +6,12 @@ using UnityEngine.Rendering.PostProcessing;
 [PostProcess(typeof(GlitchRenderer), PostProcessEvent.AfterStack, "Custom/Glitch", true)]
 public sealed class Glitch : PostProcessEffectSettings {
     public const float MaxProgress = 1f;
-    [Range(0f, 1f), Tooltip("Glitch intensity.")]
-    public FloatParameter volume = new FloatParameter { value = 0f };
+    public const float MaxScale = 0.5f;
 
     [Range(0f, MaxProgress)]
     public FloatParameter progress = new FloatParameter { value = 0f };
 
-    [Range(0f, 0.2f), Tooltip("Glitch pixellation size")]
+    [Range(0f, MaxScale), Tooltip("Glitch pixellation size")]
     public FloatParameter scale = new FloatParameter { value = 0f };
     
 }
@@ -23,9 +22,10 @@ public sealed class GlitchRenderer : PostProcessEffectRenderer<Glitch> {
     public override void Render(PostProcessRenderContext context) {
 
         var sheet = context.propertySheets.Get(Shader.Find("Hidden/Glitch"));
-        sheet.properties.SetFloat("_Volume", settings.volume.value);
+        sheet.properties.SetFloat("_Volume", AudioReactiveManager.I.GetNormalizedRms(Lasp.FilterType.BandPass));
         sheet.properties.SetFloat("_Progress", settings.progress.value);
         sheet.properties.SetFloat("_Scale", settings.scale.value);
+
 
         m_spectrum = AudioReactive.I?.Spectrum != null ? AudioReactive.I.Spectrum : m_blankSpectrum;
         sheet.properties.SetTexture("_Spectrum", m_spectrum);
@@ -34,7 +34,7 @@ public sealed class GlitchRenderer : PostProcessEffectRenderer<Glitch> {
     }
 
     public override void Init() {
-        m_blankSpectrum = new Texture2D(1024, 1, TextureFormat.RFloat, false);
+        m_blankSpectrum = new Texture2D(64, 1, TextureFormat.RFloat, false);
     }
 
     public override void Release() {

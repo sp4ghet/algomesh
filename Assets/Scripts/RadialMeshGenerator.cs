@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RadialMeshGenerator : MonoBehaviour {
 
-	[SerializeField]
-	GameObject radialMesh;
+    [SerializeField]
+    GameObject radialMesh;
 
     [SerializeField]
     RadialMesh.RadialState radialMode = RadialMesh.RadialState.orderly;
@@ -22,9 +22,9 @@ public class RadialMeshGenerator : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		float peak = AudioReactive.I.PeakLow;
+        float peak = AudioReactive.I.PeakLow;
 
-		if(peak > meshThreshold
+        if(peak > meshThreshold
             && recentPop > 60f/bpm 
             && radialMode != RadialMesh.RadialState.off
         ) {
@@ -42,7 +42,7 @@ public class RadialMeshGenerator : MonoBehaviour {
             mirrorMesh.Speed = speed;
             
             recentPop = 0;
-		}
-		recentPop += Time.deltaTime;
-	}
+        }
+        recentPop += Time.deltaTime;
+    }
 }

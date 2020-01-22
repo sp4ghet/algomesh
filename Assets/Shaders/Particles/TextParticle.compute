@@ -48,7 +48,7 @@ void SpawnParticles(uint3 id : SV_DispatchThreadID){
 
     const uint ParticleID = id.x;
     float4 pos = _ParticlePosBuffer[ParticleID];
-    if(id.x > aliveCount+spawnCount || pos.w > 0){return;}
+    if(ParticleID > aliveCount+spawnCount || pos.w > 0){return;}
     
     if(aliveCount < _ParticleCount){
         InterlockedAdd(_AliveCounter[0], 1);

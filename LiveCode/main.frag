@@ -74,6 +74,7 @@ vec3 rayMarching(vec2 uv){
     // t is total distance
     // d is step distance
     float t = 0., d = 0.;
+
     vec3 p;
     // raymarching loop
     for(int i=0; i < 100; i++){

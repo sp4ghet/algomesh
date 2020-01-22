@@ -1,32 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class GlobalState : MonoBehaviour {
+[Serializable]
+public class GlobalState {
 
-    static GlobalState _instance;
+    public static GlobalState I;
 
     [SerializeField]
-    float _bpm;
+    int _bpm;
 
     [SerializeField, ColorUsage(false, true)]
-    Vector4 baseColor;
+    Color baseColor;
 
     [SerializeField]
-    private float warp;
+    private Camera mainCam;
 
     [SerializeField]
-    private float glitch;
-
-    [SerializeField]
-    private float inversion;
-
-    public static GlobalState I { get {return _instance;} }
+    private Camera debugCam;
 
     #region PublicProperties
 
-    public float Bpm {
+    public int Bpm {
         get {
             return _bpm;
         }
@@ -45,37 +41,9 @@ public class GlobalState : MonoBehaviour {
         }
     }
     
-    public float Warp {
-        get {
-            return warp;
-        }
-
-        set {
-            warp = value;
-        }
-    }
-
-    public float Glitch {
-        get {
-            return glitch;
-        }
-        set {
-            glitch = value;
-        }
-    }
-
-    public float Inversion { get => inversion; set => inversion = value; }
+    public Camera DebugCam { get => debugCam; set => debugCam = value; }
+    public Camera MainCam { get => mainCam; set => mainCam = value; }
 
     #endregion
 
-
-    #region MonoBehaviour
-
-    private void OnEnable() {
-        if (GlobalState.I == null) {
-            GlobalState._instance = this;
-        }
-    }
-
-    #endregion
 }

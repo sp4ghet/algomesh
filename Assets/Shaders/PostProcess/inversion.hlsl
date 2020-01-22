@@ -5,6 +5,8 @@ TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
 TEXTURE2D_SAMPLER2D(_Logo, sampler_Logo);
 
 uniform float _State;
+uniform int _UseColor;
+uniform int _UseUV;
 
 float pointyOctagon(float2 uv){
   float color = 0;
@@ -74,23 +76,32 @@ float4 Frag(VaryingsDefault attr) : SV_Target
 {
     float2 uv = attr.texcoord;
     float2 st = (uv * _ScreenParams.xy * 2 - _ScreenParams.xy) / min(_ScreenParams.x, _ScreenParams.y);
-    float4 screen = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
-
-    float state = _State * 3 - EPSILON;
-    int pair = int(floor(state));
+    
+    float state = _State * 4 - EPSILON;
+    int pair = int(round(state));
 
     float d = 0;
-
-    float a = smoothstep(0.2, 0.8, frac(state));
-    if(pair == 0){
-        d = lerp(eye(st), pointyOctagon(st*(1.9-a)), a);
-    }else if(pair == 1){
-        d = lerp(pointyOctagon(st*(a+0.9)), twistSquare(st*(1.6-a)), a);
+    if(pair == 1){
+        d = eye(st);
     }else if(pair == 2){
-        d = lerp(twistSquare(st*(a+0.6)), logo(uv), a);
+        d = pointyOctagon(st*0.9);
+    }else if(pair == 3){
+		d = twistSquare(st*0.6);
+    }
+    else if (pair == 4) {
+        d = logo(uv);
     }
 
-    float4 color = lerp(screen, 1-screen, d);
+	d = clamp(d, 0, 1);
 
+    if (_UseUV) {
+		uv.y = lerp(uv.y, 1-uv.y, d);
+    }
+    float4 screen = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
+    float4 color = screen;
+    if (_UseColor) {
+        color = lerp(screen, 1 - screen, d);
+    }
+    
     return color;
 }

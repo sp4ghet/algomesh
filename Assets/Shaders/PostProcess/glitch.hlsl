@@ -46,7 +46,7 @@ float4 Frag(VaryingsDefault attr) : SV_Target
     
     // shader parameters
     float squareSize = (1 - _Progress + 0.15);
-    float phase = _Time.y;
+    float phase = _Volume;
     float scale = _Scale;
     float flow = distortion_flow.x*fmod(_Time.y*0.001, 1.);
     float progress = _Progress * 100;
@@ -59,7 +59,7 @@ float4 Frag(VaryingsDefault attr) : SV_Target
     float4 pixelTexture = float4(rand(pnoise(newUV + _Time.y, 20.)), rand(pnoise(newUV + _Time.y + _Time.x, 20.)), 0, 1);
     float3 tmp = RGBtoHSL(pixelTexture.rgb);
     pixelTexture.rgb = HSLtoRGB(tmp);
-    tmp.x += phase;
+    tmp.x += phase*HALF_PI;
     pixelTexture.rgb = HSLtoRGB(tmp);
     float2 offset = float2(0.,0.);
     if (pixelTexture.r>0.5) {
@@ -73,7 +73,7 @@ float4 Frag(VaryingsDefault attr) : SV_Target
         offset.y -= scale;
     }
     offset.y += 0.001 * flow;
-    float4 fromC = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, frac(offset + uv + rotate(float2(flow, 0.), rand(_Volume))));
+    float4 fromC = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, frac(offset + uv + rotate(float2(flow, 0.), scale)));
     float4 toC = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
     float4 c = lerp(fromC, toC, progress+1);
     return c;

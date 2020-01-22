@@ -16,8 +16,12 @@ public class RaymarchingRenderer : MonoBehaviour
     [SerializeField]
     private Texture2D spectrum;
 
+    [SerializeField]
     private float floorSens = 0f;
+    [SerializeField]
     private float gridSize = 0f;
+
+    [SerializeField]
     private float speed = 0f;
 
     float progress;
@@ -58,10 +62,17 @@ public class RaymarchingRenderer : MonoBehaviour
 
     void OnEnable()
     {
-        spectrum = new Texture2D(1, 1, TextureFormat.R8, false, true);
-        spectrum.SetPixel(0, 0, Color.white);
-        spectrum.Apply();
+        if(spectrum == null) {
+            spectrum = new Texture2D(1, 1, TextureFormat.R8, false, true);
+            spectrum.SetPixel(0, 0, Color.white);
+            spectrum.Apply();
+        }
         CleanUp();
+    }
+
+    private void Start() {
+        Destroy(spectrum);
+        spectrum = FindObjectOfType<AudioReactive>().Spectrum;
     }
 
     void OnDisable()

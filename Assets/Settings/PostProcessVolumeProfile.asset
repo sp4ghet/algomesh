@@ -19,13 +19,14 @@ MonoBehaviour:
   - {fileID: 114629677100311380}
   - {fileID: 114416150543908578}
   - {fileID: 114729398074186010}
-  - {fileID: 114215615772846458}
   - {fileID: 114768707184659424}
   - {fileID: 114184795775805538}
   - {fileID: 114048774467512254}
-  - {fileID: 114462690301532344}
-  - {fileID: 114109004827873150}
-  - {fileID: 114451904006742222}
+  - {fileID: 114059008015762248}
+  - {fileID: 114627150507385106}
+  - {fileID: 114235793907098660}
+  - {fileID: 114278215067250582}
+  - {fileID: 114451118577563368}
 --- !u!114 &114015055215414410
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1373,6 +1374,28 @@ MonoBehaviour:
     value: 0.035
   vignette:
     overrideState: 1
+    value: 0.033
+--- !u!114 &114059008015762248
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bb36018fdaf9240a6c325f13f369c5, type: 3}
+  m_Name: Glitch
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  progress:
+    overrideState: 1
+    value: 0
+  scale:
+    overrideState: 1
     value: 0
 --- !u!114 &114098005953552118
 MonoBehaviour:
@@ -1390,9 +1413,6 @@ MonoBehaviour:
   enabled:
     overrideState: 1
     value: 1
-  volume:
-    overrideState: 1
-    value: 0.156
   progress:
     overrideState: 1
     value: 0
@@ -1418,9 +1438,15 @@ MonoBehaviour:
   state:
     overrideState: 1
     value: 0
+  useColor:
+    overrideState: 1
+    value: 1
+  useUV:
+    overrideState: 1
+    value: 1
   logo:
     overrideState: 1
-    value: {fileID: 2800000, guid: 9a8e29e69ee3bd445bfacd895915f76c, type: 3}
+    value: {fileID: 2800000, guid: 65eb4258ac4682a479177d748d313e8e, type: 3}
     defaultState: 1
 --- !u!114 &114184795775805538
 MonoBehaviour:
@@ -1440,7 +1466,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1
+    value: 0
   threshold:
     overrideState: 1
     value: 2
@@ -1452,7 +1478,7 @@ MonoBehaviour:
     value: 65472
   diffusion:
     overrideState: 1
-    value: 3.34
+    value: 1
   anamorphicRatio:
     overrideState: 0
     value: 0
@@ -1463,13 +1489,13 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: a2960ffde020f27409e070d92fb2e00b, type: 3}
     defaultState: 1
   dirtIntensity:
-    overrideState: 0
-    value: 0
---- !u!114 &114215615772846458
+    overrideState: 1
+    value: 20
+--- !u!114 &114235793907098660
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1478,51 +1504,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94488653724e0384d94b7a5e7bc68a14, type: 3}
-  m_Name: Isoline
+  m_Script: {fileID: 11500000, guid: 635d25c6d7d0dec4498aedd7f332a314, type: 3}
+  m_Name: Warp
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
-  baseAxis:
+  warp:
     overrideState: 1
-    value: {x: 0, y: 1, z: 1}
-  lineInterval:
+    value: 0
+--- !u!114 &114278215067250582
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
     overrideState: 1
     value: 1
-  lineOffset:
+  intensity:
+    overrideState: 1
+    value: 0
+  intensityX:
+    overrideState: 0
+    value: 1
+  intensityY:
+    overrideState: 0
+    value: 1
+  centerX:
     overrideState: 0
     value: 0
-  lineScroll:
-    overrideState: 1
-    value: -1
-  lineColor:
-    overrideState: 1
-    value: {r: 1.5, g: 0.2, b: 0.2, a: 1}
-  lineWidth:
-    overrideState: 1
-    value: 1.5
-  sourceContribution:
-    overrideState: 1
-    value: 0.598
-  backgroundColor:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 0}
-  modulationStrength:
-    overrideState: 1
+  centerY:
+    overrideState: 0
     value: 0
-  modulationFrequency:
-    overrideState: 1
-    value: 0.1
-  modulationWidth:
-    overrideState: 1
-    value: 0.1
-  modulationOffset:
-    overrideState: 1
-    value: 0
-  modulationScroll:
-    overrideState: 1
+  scale:
+    overrideState: 0
     value: 1
 --- !u!114 &114365610642768532
 MonoBehaviour:
@@ -1583,6 +1607,25 @@ MonoBehaviour:
   speedDown:
     overrideState: 0
     value: 1
+--- !u!114 &114451118577563368
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aedf7fe468b0984b95b00545b454148, type: 3}
+  m_Name: Kaleido
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  split:
+    overrideState: 1
+    value: 0
 --- !u!114 &114451904006742222
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1618,15 +1661,12 @@ MonoBehaviour:
   enabled:
     overrideState: 1
     value: 1
-  volume:
-    overrideState: 1
-    value: 0
   progress:
     overrideState: 1
-    value: 0
+    value: 0.461
   scale:
     overrideState: 1
-    value: 0.2
+    value: 0
 --- !u!114 &114523494603754616
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1665,9 +1705,63 @@ MonoBehaviour:
   state:
     overrideState: 1
     value: 0
+  useColor:
+    overrideState: 0
+    value: 1
+  useUV:
+    overrideState: 0
+    value: 1
   logo:
     overrideState: 1
     value: {fileID: 2800000, guid: 9a8e29e69ee3bd445bfacd895915f76c, type: 3}
+    defaultState: 1
+--- !u!114 &114593409394454896
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Kaleido
+  m_EditorClassIdentifier: Assembly-CSharp::Kaleido
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  split:
+    overrideState: 1
+    value: 0
+--- !u!114 &114627150507385106
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7048c7af95f73f4694ef8d245a296ff, type: 3}
+  m_Name: Inversion
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  state:
+    overrideState: 1
+    value: 0
+  useColor:
+    overrideState: 1
+    value: 1
+  useUV:
+    overrideState: 1
+    value: 1
+  logo:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 65eb4258ac4682a479177d748d313e8e, type: 3}
     defaultState: 1
 --- !u!114 &114629677100311380
 MonoBehaviour:
@@ -1758,7 +1852,7 @@ MonoBehaviour:
       m_NumAlphaKeys: 2
   fillOpacity:
     overrideState: 1
-    value: 0
+    value: 1
 --- !u!114 &114766690986127606
 MonoBehaviour:
   m_ObjectHideFlags: 3

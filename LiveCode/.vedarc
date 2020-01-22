@@ -3,6 +3,7 @@
   "camera": true, // Enable WebCam input
   "glslify": true,
   "pixelRatio": 1.0,
+  "midi": true,
   IMPORTED: {
     image: {
       "PATH": "./images/1.jpg",

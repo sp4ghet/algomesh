@@ -36,8 +36,7 @@ public class MarineFishGotoTheGoalScript : MonoBehaviour {
 			}
 		}
 		marineFishCharacter.upDownAcceleration = goalRelPos.y;
-
-		Debug.Log (goalRelPos.x);
+        
 	}
 
 }

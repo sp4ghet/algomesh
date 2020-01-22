@@ -15,6 +15,7 @@
                 #pragma vertex VertDefault
                 #pragma fragment Frag
 
+
             ENDHLSL
         }
     }

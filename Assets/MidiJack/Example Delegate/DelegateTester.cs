@@ -15,7 +15,7 @@ public class DelegateTester : MonoBehaviour
 
     void Knob(MidiChannel channel, int knobNumber, float knobValue)
     {
-        Debug.Log("Knob: " + knobNumber + "," + knobValue);
+        Debug.LogError("Knob: " + channel + "," + knobNumber + "," + knobValue);
     }
 
     void OnEnable()

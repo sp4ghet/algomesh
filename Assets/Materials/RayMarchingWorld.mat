@@ -60,11 +60,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Floor: 0
+    - _Floor: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Grid: 0
+    - _Grid: 0.5
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

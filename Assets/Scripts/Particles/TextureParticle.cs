@@ -38,8 +38,11 @@ public class TextureParticle : MonoBehaviour
     [SerializeField]
     private float m_lifetime = 1.5f;
 
+    private float lifecycleTime = 0f;
+
     int currentIndex = 0;
     Copy.VFX.Utils.PointCacheAsset m_pCache;
+    private List<string> modelNames;
 
     float m_curlIntensity;
     float m_forwardIntensity;
@@ -62,9 +65,17 @@ public class TextureParticle : MonoBehaviour
     public float ForwardIntensity { get => m_forwardIntensity; set => m_forwardIntensity = value; }
     public float ExplodeIntensity { get => m_explodeIntensity; set => m_explodeIntensity = value; }
     public float Lifetime { get => m_lifetime; set => m_lifetime = value; }
+    public int ModelCount { get => m_pCaches.Count; }
+    public List<string> ModelNames { get => modelNames; set => modelNames = value; }
+    public int CurrentIndex { get => currentIndex; set => currentIndex = value; }
 
     public void SetPCache(float t) {
-        currentIndex = Mathf.FloorToInt(t * m_pCaches.Count) % m_pCaches.Count;
+        currentIndex = Mathf.RoundToInt(t * ModelCount) % ModelCount;
+        m_pCache = m_pCaches[currentIndex];
+    }
+
+    public void SetPCache(int idx) {
+        currentIndex = idx % ModelCount;
         m_pCache = m_pCaches[currentIndex];
     }
 
@@ -78,6 +89,40 @@ public class TextureParticle : MonoBehaviour
         CurlIntensity = 1f-t;
     }
 
+    Coroutine popping;
+    public void Pop() {
+
+        popping = StartCoroutine(PopRoutine());
+    }
+
+    Vector4[] m_posArray;
+    IEnumerator PopRoutine() {
+        lifecycleTime = 0f;
+        float lifetimeCache = m_lifetime;
+        m_lifetime = 0.1f;
+        Curl(0);
+
+        float time = Time.time;
+        float start = Time.time;
+        while(time - start < m_lifetime) {
+            time = Time.time;
+            yield return null;
+        }
+
+        m_posBuffer.GetData(m_posArray);
+        for (int i = 0; i < m_posArray.Length; i++) {
+            var orig = m_posArray[i];
+            m_posArray[i] = new Vector4(orig.x, orig.y, orig.z, 0);
+        }
+        m_posBuffer.SetData(m_posArray);
+
+        Alive = 0;
+        Curl(1);
+        popping = null;
+        m_lifetime = lifetimeCache;
+        lifecycleTime = 0;
+    }
+
     void InitBuffer() {
         m_particleCount = m_particleCount > m_pCache.PointCount ? m_pCache.PointCount : m_particleCount;
         m_particleCount = m_particleCount - m_particleCount%BLOCK_SIZE;
@@ -86,6 +131,7 @@ public class TextureParticle : MonoBehaviour
         m_argsBuffer = new ComputeBuffer(1, args.Length * sizeof(uint),
                 ComputeBufferType.IndirectArguments);
         m_aliveBuffer = new ComputeBuffer(1, Marshal.SizeOf(typeof(int)));
+        m_posArray = new Vector4[m_particleCount];
     }
 
     void ReleaseBuffer() {
@@ -153,7 +199,7 @@ public class TextureParticle : MonoBehaviour
 
         cs.SetFloat("_CurlIntensity", m_curlIntensity);
         cs.SetFloat("_ForwardIntensity", m_forwardIntensity);
-        cs.SetFloat("_ExploreIntensity", m_explodeIntensity);
+        cs.SetFloat("_ExplodeIntensity", m_explodeIntensity);
 
         cs.Dispatch(kernelPos, threadGroupSize, 1, 1);
     }
@@ -186,8 +232,13 @@ public class TextureParticle : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        ModelNames = new List<string>();
+        foreach(var pCache in m_pCaches) {
+            ModelNames.Add(pCache.name);
+        }
+
         m_pCache = m_pCaches[0];
         m_defaultColorTex = new Texture2D(1, 1);
         InitBuffer();
@@ -197,7 +248,8 @@ public class TextureParticle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float lifecycleTime = (Time.time % m_lifetime) / m_lifetime;
+        lifecycleTime += Time.deltaTime / m_lifetime;
+        lifecycleTime = lifecycleTime % m_lifetime;
         Loop(lifecycleTime);
         Render();
     }

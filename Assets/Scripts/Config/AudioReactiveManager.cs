@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lasp;
 
 public class AudioReactiveManager : MonoBehaviour
 {
@@ -70,36 +71,74 @@ public class AudioReactiveManager : MonoBehaviour
     public AudioReactiveProgress HighEigthDelegate;
     public AudioReactiveProgress HighTripletDelegate;
     public AudioReactiveProgress HighTripletEigthDelegate;
+    
 
-    public enum Pitch {
-        Low,
-        Band,
-        High
+    public void SetThresh(FilterType filter, float thresh) {
+        switch (filter) {
+        case FilterType.LowPass:
+            lowThresh = thresh;
+            break;
+        case FilterType.BandPass:
+            bandThresh = thresh;
+            break;
+        case FilterType.HighPass:
+            highThresh = thresh;
+            break;
+        }
+
     }
 
-    public void SubPitchAndTempo(Pitch pitch, float t, AudioReactiveProgress callback) {
+    public float GetThresh(FilterType filter) {
+        switch (filter) {
+        case FilterType.LowPass:
+            return lowThresh;
+            
+        case FilterType.BandPass:
+            return bandThresh;
+        case FilterType.HighPass:
+            return highThresh;
+        }
+
+        return 0f;
+    }
+
+    public float GetNormalizedRms(FilterType filter) {
+        switch (filter) {
+        case FilterType.LowPass:
+            return AudioReactive.I.RmsLow / lowThresh;
+
+        case FilterType.BandPass:
+            return AudioReactive.I.RmsBand / bandThresh;
+        case FilterType.HighPass:
+            return AudioReactive.I.RmsHigh / highThresh;
+        }
+
+        return 0f;
+    }
+
+    public void SubPitchAndTempo(FilterType pitch, float t, AudioReactiveProgress callback) {
         switch (pitch) {
-            case Pitch.Low:
+            case FilterType.LowPass:
                 SubLowTempoFromValue(t, callback);
                 break;
-            case Pitch.Band:
+            case FilterType.BandPass:
                 SubBandTempoFromValue(t, callback);
                 break;
-            case Pitch.High:
+            case FilterType.HighPass:
                 SubHighTempoFromValue(t, callback);
                 break;
         }
     }
 
-    public void UnsubPitchAndTempo(Pitch pitch, float t, AudioReactiveProgress callback) {
+    public void UnsubPitchAndTempo(FilterType pitch, float t, AudioReactiveProgress callback) {
         switch (pitch) {
-        case Pitch.Low:
+        case FilterType.LowPass:
             UnsubLowTempoFromValue(t, callback);
             break;
-        case Pitch.Band:
+        case FilterType.BandPass:
             UnsubBandTempoFromValue(t, callback);
             break;
-        case Pitch.High:
+        case FilterType.HighPass:
             UnsubHighTempoFromValue(t, callback);
             break;
         }
@@ -126,7 +165,7 @@ public class AudioReactiveManager : MonoBehaviour
         }
     }
 
-        public void UnsubLowTempoFromValue(float t, AudioReactiveProgress callback) {
+    public void UnsubLowTempoFromValue(float t, AudioReactiveProgress callback) {
 
         if (t < 1f / 7f) {
             LowTripletEigthDelegate -= callback;
@@ -164,7 +203,7 @@ public class AudioReactiveManager : MonoBehaviour
         }
     }
 
-        public void UnsubBandTempoFromValue(float t, AudioReactiveProgress callback) {
+    public void UnsubBandTempoFromValue(float t, AudioReactiveProgress callback) {
 
         if (t < 1f / 7f) {
             BandTripletEigthDelegate -= callback;
@@ -202,7 +241,7 @@ public class AudioReactiveManager : MonoBehaviour
         }
     }
 
-        public void UnsubHighTempoFromValue(float t, AudioReactiveProgress callback) {
+    public void UnsubHighTempoFromValue(float t, AudioReactiveProgress callback) {
 
         if (t < 1f / 7f) {
             HighTripletEigthDelegate -= callback;
@@ -481,18 +520,12 @@ public class AudioReactiveManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Hoge(float t){
-        if(t > 0.1){return;}
-        Debug.Log("hoge");
-    }
-
     void Start()
     {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         singleBeat = 60f / bpm;
         float nudge = singleBeat * phase;
@@ -505,109 +538,109 @@ public class AudioReactiveManager : MonoBehaviour
         //Debug.LogFormat("High: {0}", AudioReactive.I.RmsHigh);
 
         // low pass
-        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat*8) < Time.deltaTime && timing - lowTwoMeasureTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat*8) < Time.fixedDeltaTime * 3f && timing - lowTwoMeasureTiming > safety) {
             lowTwoMeasureTiming = timing;
             StartCoroutine(LowTwoMeasure());
         }
 
-        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat * 4) < Time.deltaTime && timing - lowWholeTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat * 4) < Time.fixedDeltaTime * 3f && timing - lowWholeTiming > safety) {
             lowWholeTiming = timing;
             StartCoroutine(LowWhole());
         }
 
-        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat * 2) < Time.deltaTime && timing - lowHalfTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat * 2) < Time.fixedDeltaTime * 3f && timing - lowHalfTiming > safety) {
             lowHalfTiming = timing;
             StartCoroutine(LowHalf());
         }
 
-        if (AudioReactive.I.RmsLow > lowThresh && timing % singleBeat < Time.deltaTime &&  timing - lowQuarterTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % singleBeat < Time.fixedDeltaTime * 3f &&  timing - lowQuarterTiming > safety) {
             lowQuarterTiming = timing;
             StartCoroutine(LowQuarter());
         }
 
-        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat/2) < Time.deltaTime && timing - lowEigthTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat/2) < Time.fixedDeltaTime * 3f && timing - lowEigthTiming > safety) {
             lowEigthTiming = timing;
             StartCoroutine(LowEigth());
         }
 
-        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat / 3) < Time.deltaTime && timing - lowTripletTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat / 3) < Time.fixedDeltaTime * 3f && timing - lowTripletTiming > safety) {
             lowTripletTiming = timing;
             StartCoroutine(LowTriplet());
         }
 
-        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat / 6) < Time.deltaTime && timing - lowTripEigthTiming > safety) {
+        if (AudioReactive.I.RmsLow > lowThresh && timing % (singleBeat / 6) < Time.fixedDeltaTime * 3f && timing - lowTripEigthTiming > safety) {
             lowTripEigthTiming = timing;
             StartCoroutine(LowTripletEigth());
         }
 
         // band pass
-        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat*8) < Time.deltaTime && timing - bandTwoMeasureTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat*8) < Time.fixedDeltaTime * 3f && timing - bandTwoMeasureTiming > safety) {
             bandTwoMeasureTiming = timing;
             StartCoroutine(BandTwoMeasure());
         }
 
-        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat * 4) < Time.deltaTime && timing - bandWholeTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat * 4) < Time.fixedDeltaTime * 3f && timing - bandWholeTiming > safety) {
             bandWholeTiming = timing;
             StartCoroutine(BandWhole());
         }
 
-        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat * 2) < Time.deltaTime && timing - bandHalfTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat * 2) < Time.fixedDeltaTime * 3f && timing - bandHalfTiming > safety) {
             bandHalfTiming = timing;
             StartCoroutine(BandHalf());
         }
 
-        if (AudioReactive.I.RmsBand > bandThresh && timing % singleBeat < Time.deltaTime &&  timing - bandQuarterTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % singleBeat < Time.fixedDeltaTime * 3f &&  timing - bandQuarterTiming > safety) {
             bandQuarterTiming = timing;
             StartCoroutine(BandQuarter());
         }
 
-        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat/2) < Time.deltaTime && timing - bandEigthTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat/2) < Time.fixedDeltaTime * 3f && timing - bandEigthTiming > safety) {
             bandEigthTiming = timing;
             StartCoroutine(BandEigth());
         }
 
-        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat / 3) < Time.deltaTime && timing - bandTripletTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat / 3) < Time.fixedDeltaTime * 3f && timing - bandTripletTiming > safety) {
             bandTripletTiming = timing;
             StartCoroutine(BandTriplet());
         }
 
-        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat / 6) < Time.deltaTime && timing - bandTripEigthTiming > safety) {
+        if (AudioReactive.I.RmsBand > bandThresh && timing % (singleBeat / 6) < Time.fixedDeltaTime * 3f && timing - bandTripEigthTiming > safety) {
             bandTripEigthTiming = timing;
             StartCoroutine(BandTripletEigth());
         }
 
         // high pass
-        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat*8) < Time.deltaTime && timing - highTwoMeasureTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat*8) < Time.fixedDeltaTime * 3f && timing - highTwoMeasureTiming > safety) {
             highTwoMeasureTiming = timing;
             StartCoroutine(HighTwoMeasure());
         }
 
-        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat * 4) < Time.deltaTime && timing - highWholeTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat * 4) < Time.fixedDeltaTime * 3f && timing - highWholeTiming > safety) {
             highWholeTiming = timing;
             StartCoroutine(HighWhole());
         }
 
-        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat * 2) < Time.deltaTime && timing - highHalfTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat * 2) < Time.fixedDeltaTime * 3f && timing - highHalfTiming > safety) {
             highHalfTiming = timing;
             StartCoroutine(HighHalf());
         }
 
-        if (AudioReactive.I.RmsHigh > highThresh && timing % singleBeat < Time.deltaTime &&  timing - highQuarterTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % singleBeat < Time.fixedDeltaTime * 3f &&  timing - highQuarterTiming > safety) {
             highQuarterTiming = timing;
             StartCoroutine(HighQuarter());
         }
 
-        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat/2) < Time.deltaTime && timing - highEigthTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat/2) < Time.fixedDeltaTime * 3f && timing - highEigthTiming > safety) {
             highEigthTiming = timing;
             StartCoroutine(HighEigth());
         }
 
-        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat / 3) < Time.deltaTime && timing - highTripletTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat / 3) < Time.fixedDeltaTime * 3f && timing - highTripletTiming > safety) {
             highTripletTiming = timing;
             StartCoroutine(HighTriplet());
         }
 
-        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat / 6) < Time.deltaTime && timing - highTripEigthTiming > safety) {
+        if (AudioReactive.I.RmsHigh > highThresh && timing % (singleBeat / 6) < Time.fixedDeltaTime * 3f && timing - highTripEigthTiming > safety) {
             highTripEigthTiming = timing;
             StartCoroutine(HighTripletEigth());
         }

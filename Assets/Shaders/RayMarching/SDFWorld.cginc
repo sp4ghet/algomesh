@@ -12,8 +12,9 @@ float soundFloor(float3 pos){
 
     float size = .5;
     int2 idx = pos.xz/size - fmod(pos.xz, size);
-    float fftRadius = 100/size;
-    float x = length(idx)/fftRadius;
+    float fftRadius = 15/size;
+    float x = abs(idx.x) + abs(idx.y);
+	x /= fftRadius;
     float yOffset = tex2D(_MainTex, float2(x, 0)).r * (1-step(1, x));
 
     float3 newPos = repeat(pos, size);

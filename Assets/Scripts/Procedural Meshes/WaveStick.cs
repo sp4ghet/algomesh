@@ -12,6 +12,7 @@ public class WaveStick : MonoBehaviour {
     int sticks = 56;
     float speed = 5;
 
+    float[] samples;
     
     Mesh mesh;
     Vector3[] vertices;
@@ -20,8 +21,8 @@ public class WaveStick : MonoBehaviour {
     public float Radius { get => radius; set => radius = value; }
     public float Speed { get => speed; set => speed = value; }
 
-    void UpdateMesh(float[] samples) {
-        UpdateVertices(samples);
+    void UpdateMesh() {
+        UpdateVertices();
         UpdateTriangles();
 
 
@@ -29,11 +30,11 @@ public class WaveStick : MonoBehaviour {
         mesh.RecalculateBounds();
     }
 
-    void UpdateVertices(float[] samples) {
+    void UpdateVertices() {
         for (var i = 0; i+8 < vertices.Length; i += 8) {
             float t = (float)i/vertices.Length;
             
-            int index = Mathf.RoundToInt(Easing.EaseInExpo(0, samples.Length, 0.99f-t));
+            int index = Mathf.RoundToInt(Mathf.Lerp(0, samples.Length, (float)i/vertices.Length));
             float sample = samples[index] * amplifier;
             Vector3 top = Vector3.up * sample/2;
             Vector3 bot = Vector3.down * sample/2;
@@ -141,15 +142,15 @@ public class WaveStick : MonoBehaviour {
         mesh = new Mesh();
         vertices = new Vector3[8 * sticks];
 
-        var samples = AudioReactive.I.Samples;
+        samples = AudioReactive.I.LogSamples;
 
-        UpdateMesh(samples);
+        UpdateMesh();
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
     // Update is called once per frame
     void Update () {
-        var samples = AudioReactive.I.Samples;
-        UpdateMesh(samples);
+        samples = AudioReactive.I.LogSamples;
+        UpdateMesh();
     }
 }

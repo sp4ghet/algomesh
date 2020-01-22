@@ -11,6 +11,7 @@
                 #pragma vertex VertDefault
                 #pragma fragment Frag
                 #include "glitch.hlsl"
+
             ENDHLSL
         }
     }

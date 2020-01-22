@@ -20,6 +20,7 @@ namespace TMPro.Examples
 
         private TextMeshPro m_TextMeshPro;
         private Transform m_frameCounter_transform;
+        [SerializeField]
         private Camera m_camera;
 
         private FpsCounterAnchorPositions last_AnchorPosition;
@@ -28,11 +29,11 @@ namespace TMPro.Examples
         {
             if (!enabled)
                 return;
-
-            m_camera = Camera.main;
+            
             Application.targetFrameRate = -1;
 
             GameObject frameCounter = new GameObject("Frame Counter");
+            frameCounter.transform.SetParent(transform);
 
             m_TextMeshPro = frameCounter.AddComponent<TextMeshPro>();
             m_TextMeshPro.font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");

@@ -5,7 +5,6 @@ using MidiJack;
 
 public class MidiInput : MonoBehaviour {
 
-    [SerializeField] SceneController sceneController;
 
     //Launch Control XL
     // Top Knob Row
@@ -23,156 +22,121 @@ public class MidiInput : MonoBehaviour {
     // 41 42 43 45 57 58 59 60
     // 73 74 75 76 89 90 91 92
 
+    //Arturia Beatstep
+    //
+    // Knobs
+    //  10 74 71 76 77 93 73 75
+    // 114 18 19 16 17 91 79 72
+    //
+    // Buttons
+    // 44 45 46 47 48 49 50 51
+    // 36 37 38 39 40 41 42 43
 
-    enum MidiNotes : int {
-        bpmTap = 41
-        , cameraChangeMotif = 42
-        , cameraChangePosition = 43
-        , textureCurl = 57
-        , textureForward = 58
-        , textureExplode = 59
-        
-        , recolorTap = 73
-        , toggleBoids = 75
+    [SerializeField]
+    MidiChannel LaunchControl = MidiChannel.Ch9;
+    [SerializeField]
+    MidiChannel Arturia = MidiChannel.Ch1;
+
+    public enum LaunchNotes : int {
+
     }
 
-    enum MidiKnobs : int {
-         lowThreshKnob = 13
-        , bandThreshKnob = 14
-        , highThreshKnob = 15
-        , boidsAudioSensitivity = 17
-        , pCacheSelection = 20
+    public enum LaunchKnobs : int {
+        Bloom = 77,
+        ChromAb = 78,
+        GlitchProgress = 79,
+        MainSpeed = 84,
+        LowThresh = 49,
+        BandThresh = 29,
+        HighThresh = 13
 
-        , cameraPosTempo = 29
-        , objectSpaceTempo = 35
-        , pCacheTempo = 36
+    }
 
-        , inversionKnob = 49
-        , liveCodeScale = 50
-        , floorSDFSensitivity = 52
-        , spatialGridSDFScale = 53
-        , objectSDFScale = 55
-        , pCacheParticlesScale = 56
+    public enum ArturiaNotes : int {
+        BpmTap = 44,
+        LensDistort = 36,
+        CameraNext = 37,
+        TexturePop = 43
+    }
 
-        , warpSlider = 77
-        , glitchSlider = 78
-        , recolorSlider = 79
-        , waveStickScale = 81
-        , radialMeshScale = 80
-        , quadTreeScale = 82
-        , moveForward = 83
-        , objectSDFLerp = 84
+    public enum ArturiaKnobs : int {
+
     }
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
-        MidiNotes _note = (MidiNotes)note;
-        switch (_note) {
-        case MidiNotes.bpmTap:
-            sceneController.SetBpm();
-            break;
-        case MidiNotes.recolorTap:
-            sceneController.NewRecolor();
-            break;
-        case MidiNotes.cameraChangeMotif:
-            sceneController.NextCameraMotif();
-            break;
-        case MidiNotes.cameraChangePosition:
-            sceneController.NextCameraPosition();
-            break;
-        case MidiNotes.toggleBoids:
-            sceneController.ToggleBoids();
-            break;
-        case MidiNotes.textureCurl:
-            sceneController.SetTextureCurl(1);
-            break;
-        case MidiNotes.textureForward:
-            sceneController.SetTextureForward(1);
-            break;
-        case MidiNotes.textureExplode:
-            sceneController.SetTextureExplode(1);
-            break;
+        if (channel == LaunchControl) {
+            LaunchNotes _note = (LaunchNotes)note;
+            switch (_note) {
+            default:
+                break;
+            }
+        }
+        if (channel == Arturia) {
+            var _note = (ArturiaNotes)note;
+            switch (_note) {
+            case ArturiaNotes.BpmTap:
+                SceneMan.I.BpmTap();
+                break;
+            case ArturiaNotes.CameraNext:
+                SceneMan.I.CameraNext();
+                break;
+            case ArturiaNotes.LensDistort:
+                PostProcessManager.I.BarrelPop();
+                break;
+            case ArturiaNotes.TexturePop:
+                SceneMan.I.MainTexturePop();
+                break;
+            }
         }
     }
 
     void NoteOff(MidiChannel channel, int note) {
-        MidiNotes _note = (MidiNotes)note;
-        switch (_note) {
-        case MidiNotes.textureCurl:
-            sceneController.SetTextureCurl(0);
-            break;
-        case MidiNotes.textureForward:
-            sceneController.SetTextureForward(0);
-            break;
-        case MidiNotes.textureExplode:
-            sceneController.SetTextureExplode(0);
-            break;
+        if (channel == LaunchControl) {
+            LaunchNotes _note = (LaunchNotes)note;
+            switch (_note) {
+            default: break;
+            }
+        }
+        if (channel == Arturia) {
+            var _note = (ArturiaNotes)note;
+            switch (_note) {
+            default: break;
+            }
         }
     }
 
     void Knob(MidiChannel channel, int knobNumber, float knobValue) {
-        MidiKnobs knob = (MidiKnobs)knobNumber;
-        switch (knob) {
-        case MidiKnobs.warpSlider:
-            sceneController.SetWarp(knobValue);
-            break;
-        case MidiKnobs.glitchSlider:
-            sceneController.SetGlitch(knobValue);
-            break;
-        case MidiKnobs.inversionKnob:
-            sceneController.SetInversion(knobValue);
-            break;
-        case MidiKnobs.recolorSlider:
-            sceneController.RecolorOpacity(knobValue);
-            break;
-        case MidiKnobs.lowThreshKnob:
-            sceneController.SetLowThresh(knobValue);
-            break;
-        case MidiKnobs.bandThreshKnob:
-            sceneController.SetBandThresh(knobValue);
-            break;
-        case MidiKnobs.highThreshKnob:
-            sceneController.SetHighThresh(knobValue);
-            break;
-        case MidiKnobs.waveStickScale:
-            sceneController.SetWaveStickScale(knobValue);
-            break;
-        case MidiKnobs.radialMeshScale:
-            sceneController.SetRadialMeshScale(knobValue);
-            break;
-        case MidiKnobs.floorSDFSensitivity:
-            sceneController.SetFloorSensitivity(knobValue);
-            break;
-        case MidiKnobs.spatialGridSDFScale:
-            sceneController.SetGridSize(knobValue);
-            break;
-        case MidiKnobs.objectSDFScale:
-            sceneController.SetObjectSpaceScale(knobValue);
-            break;
-        case MidiKnobs.quadTreeScale:
-            sceneController.SetQuadTreeScale(knobValue);
-            break;
-        case MidiKnobs.liveCodeScale:
-            sceneController.SetLiveCodeScale(knobValue);
-            break;
-        case MidiKnobs.pCacheParticlesScale:
-            sceneController.SetPCacheScale(knobValue);
-            break;
-        case MidiKnobs.pCacheSelection:
-            sceneController.SetPCache(knobValue);
-            break;
-        case MidiKnobs.pCacheTempo:
-            sceneController.SetPCacheTempo(knobValue);
-            break;
-        case MidiKnobs.moveForward:
-            sceneController.MoveForward(knobValue);
-            break;
-        case MidiKnobs.objectSpaceTempo:
-            break;
-        case MidiKnobs.cameraPosTempo:
-            break;
-        case MidiKnobs.objectSDFLerp:
-            sceneController.SetObjectSpaceLerp(knobValue);
-            break;
+        if(channel == LaunchControl) {
+            LaunchKnobs knob = (LaunchKnobs)knobNumber;
+            switch (knob) {
+            case LaunchKnobs.Bloom:
+                PostProcessManager.I.BloomControl(knobValue);
+                break;
+            case LaunchKnobs.ChromAb:
+                PostProcessManager.I.ChromAbControl(knobValue);
+                break;
+            case LaunchKnobs.MainSpeed:
+                SceneMan.I.SetMainSpeed(knobValue);
+                break;
+            case LaunchKnobs.GlitchProgress:
+                PostProcessManager.I.GlitchProgress(knobValue);
+                break;
+            case LaunchKnobs.LowThresh:
+                AudioReactiveManager.I.SetThresh(Lasp.FilterType.LowPass, knobValue * 100);
+                break;
+            case LaunchKnobs.BandThresh:
+                AudioReactiveManager.I.SetThresh(Lasp.FilterType.BandPass, knobValue * 100);
+                break;
+            case LaunchKnobs.HighThresh:
+                AudioReactiveManager.I.SetThresh(Lasp.FilterType.HighPass, knobValue * 100);
+                break;
+            }
+        }
+        if(channel == Arturia) {
+            ArturiaKnobs knob = (ArturiaKnobs)knobNumber;
+            switch (knob) {
+            default: break;
+            }
         }
     }
 
